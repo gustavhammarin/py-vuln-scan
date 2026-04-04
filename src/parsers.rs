@@ -1,11 +1,11 @@
 use std::{collections::HashSet, str::FromStr};
 
 use pep508_rs::{
-    Requirement, VerbatimUrl, marker,
-    pep440_rs::{Version, VersionSpecifier, VersionSpecifiers},
+    Requirement, VerbatimUrl,
+    pep440_rs::{Version, VersionSpecifiers},
 };
 
-use crate::http::{PypiRequirements, get_requires_dist};
+use crate::http::PypiRequirements;
 
 pub fn parse_deps(
     reqs: PypiRequirements
