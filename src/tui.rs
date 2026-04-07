@@ -163,7 +163,7 @@ fn get_ecosystem(entry: &OsvVuln) -> &str {
         .unwrap_or("—")
 }
 
-fn get_package(entry: &OsvVuln) -> &str {
+pub fn get_package(entry: &OsvVuln) -> &str {
     entry.affected.as_ref()
         .and_then(|a| a.first())
         .and_then(|a| a.package.as_ref())

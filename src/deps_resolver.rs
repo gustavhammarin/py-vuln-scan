@@ -186,18 +186,12 @@ pub struct DepRef {
     pub name: String,
     pub version: String,
 }
-#[derive(serde::Serialize, Clone, PartialEq, Eq, Hash)]
-pub struct PackageRef {
-    pub name: String,
-    pub version: String,
-    pub depends_on: Vec<Box<PackageRef>>,
-}
 #[derive(serde::Serialize)]
 pub struct ResolvedDeps {
     /// Flat map: package name → resolved version string (used for OSV lookups)
     pub packages: HashMap<String, String>,
     /// Adjacency list: package name → direct dependencies with resolved versions
-    pub graph: PackageRef,
+    pub graph: HashMap<String, Vec<DepRef>>,
 } 
 
 pub async fn resolve_all_deps(package: &str, version: &str) -> Result<ResolvedDeps, AppError> {
@@ -237,13 +231,8 @@ pub async fn resolve_all_deps(package: &str, version: &str) -> Result<ResolvedDe
                 }
 
                 let packages: HashMap<String, String> = sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
-                let root_ver = packages.get(&pkg).cloned().unwrap_or_default();
 
-                let mut visited: HashSet<String> = HashSet::new();
-
-                let tree = sort_graph(&pkg, &root_ver, &graph, &mut visited);
-
-                Ok(ResolvedDeps { packages, graph: tree })
+                Ok(ResolvedDeps { packages, graph })
             }
             Err(pubgrub::PubGrubError::NoSolution(mut tree)) => {
                 tree.collapse_no_versions();
@@ -255,33 +244,6 @@ pub async fn resolve_all_deps(package: &str, version: &str) -> Result<ResolvedDe
         }
     })
     .await?
-}
-
-pub fn sort_graph(
-    root: &str,
-    root_ver: &str,
-    unsorted: &HashMap<String, Vec<DepRef>>,
-    visited: &mut HashSet<String>
-) -> PackageRef {
-    let key = format!("{}@{}", root, root_ver);
-
-    if !visited.insert(key){
-        return PackageRef { name: root.to_string(), version: root_ver.to_string(), depends_on: vec![] }
-    }
-
-    let deps = unsorted
-        .get(root)
-        .cloned()
-        .unwrap_or_default();
-
-    PackageRef {
-        name: root.to_string(),
-        version: root_ver.to_string(),
-        depends_on: deps
-            .iter()
-            .map(|dep| Box::new(sort_graph(&dep.name, &dep.version, unsorted, visited)))
-            .collect(),
-    }
 }
 
 #[test]
