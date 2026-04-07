@@ -1,41 +1,47 @@
-use std::{collections::HashSet, str::FromStr};
+use std::str::FromStr;
 
 use pep508_rs::{
-    Requirement, VerbatimUrl,
-    pep440_rs::{Version, VersionSpecifiers},
+    ExtraName, MarkerEnvironment, MarkerEnvironmentBuilder, Requirement, VerbatimUrl,
+    pep440_rs::VersionSpecifiers,
 };
 
-use crate::http::PypiRequirements;
+use crate::http::{PypiRequirements, get_requires_dist};
 
-pub fn parse_deps(
-    reqs: PypiRequirements
-) -> Vec<Requirement<VerbatimUrl>> {
-    let all_versions: Vec<Version> = ["3.8.0", "3.9.0", "3.10.0", "3.11.0", "3.12.0"]
-        .iter()
-        .filter_map(|v| Version::from_str(v).ok())
-        .collect();
+fn linux_marker_env() -> MarkerEnvironment {
+    MarkerEnvironmentBuilder {
+        implementation_name: "cpython",
+        implementation_version: "3.11.0",
+        os_name: "posix",
+        platform_machine: "x86_64",
+        platform_python_implementation: "CPython",
+        platform_release: "",
+        platform_system: "Linux",
+        platform_version: "",
+        python_full_version: "3.11.0",
+        python_version: "3.11",
+        sys_platform: "linux",
+    }
+    .try_into()
+    .expect("static marker env is valid")
+}
 
-    let python_versions = reqs.requires_python
-        .filter(|s| !s.is_empty())  // behandla "" som None
-        .and_then(|spec_str| VersionSpecifiers::from_str(spec_str.as_str()).ok())
-        .map(|specifiers| {
-            all_versions
-                .iter()
-                .filter(|v| specifiers.contains(v))
-                .cloned()
-                .collect::<Vec<_>>()
-        })
-        .unwrap_or(all_versions);  // fallback till alla versioner
+pub fn parse_deps(reqs: PypiRequirements) -> Vec<Requirement<VerbatimUrl>> {
+    // Bail out early if Python version constraint excludes 3.11.
+    if let Some(spec_str) = reqs.requires_python.filter(|s| !s.is_empty()) {
+        if let Ok(specifiers) = VersionSpecifiers::from_str(&spec_str) {
+            let py311 = pep508_rs::pep440_rs::Version::from_str("3.11.0").unwrap();
+            if !specifiers.contains(&py311) {
+                return vec![];
+            }
+        }
+    }
+
+    let env = linux_marker_env();
 
     reqs.requires_dist
         .into_iter()
         .filter_map(|s| Requirement::from_str(&s).ok())
-        .filter(|req| {
-            req.evaluate_extras_and_python_version(
-                &HashSet::new(),
-                &python_versions,
-            )
-        })
+        .filter(|req| req.evaluate_markers(&env, &[] as &[ExtraName]))
         .collect()
 }
 

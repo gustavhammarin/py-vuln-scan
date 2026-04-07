@@ -25,10 +25,12 @@ async fn main() -> Result<(), AppError> {
 
     println!("Gathering data...");
     let deps = resolve_all_deps(&cli.package, &cli.version).await?;
-
+    /* tokio::fs::write("result.json", serde_json::to_string_pretty(&deps).unwrap()).await.unwrap(); */
     println!("Checking for vulnerabilities...");
     let vuln_fetcher = VulnFetcher::new();
-    let vulns = vuln_fetcher.fetch_vulnerabilities(deps).await?;
+    let vulns = vuln_fetcher.fetch_vulnerabilities(deps.packages).await?;
+
+    /* tokio::fs::write("vulns.json", serde_json::to_string_pretty(&vulns).unwrap()).await.unwrap(); */
 
     let mut terminal = ratatui::init();
     let mut app = App::new(vulns);

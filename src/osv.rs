@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 
 use futures::{StreamExt, stream};
-use pep508_rs::pep440_rs::Version;
 
 use crate::error::AppError;
 use crate::schemas::{OsvPackage, OsvQuery, OsvResponse, OsvVuln};
@@ -17,9 +16,9 @@ impl VulnFetcher {
         }
     }
 
-    pub async fn fetch_vulnerabilities(&self, deps: HashMap<String, Version>) -> Result<Vec<OsvVuln>, AppError> {
-        let results = stream::iter(deps)
-            .map(|(p, v)| self.fetch_vulns_for_package(p, v.to_string()))
+    pub async fn fetch_vulnerabilities(&self, packages: HashMap<String, String>) -> Result<Vec<OsvVuln>, AppError> {
+        let results = stream::iter(packages)
+            .map(|(p, v)| self.fetch_vulns_for_package(p, v))
             .buffer_unordered(10)
             .filter_map(|r| async { r.ok() })
             .collect::<Vec<_>>()

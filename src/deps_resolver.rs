@@ -181,10 +181,24 @@ impl DependencyProvider for PyPIProvider {
     }
 }
 
+#[derive(serde::Serialize, Clone, PartialEq, Eq, Hash)]
+pub struct DepRef {
+    pub name: String,
+    pub version: String,
+}
+
+#[derive(serde::Serialize)]
+pub struct ResolvedDeps {
+    /// Flat map: package name → resolved version string (used for OSV lookups)
+    pub packages: HashMap<String, String>,
+    /// Adjacency list: package name → direct dependencies with resolved versions
+    pub graph: HashMap<String, Vec<DepRef>>,
+}
+
 pub async fn resolve_all_deps(
     package: &str,
     version: &str,
-) -> Result<HashMap<String, Version>, AppError> {
+) -> Result<ResolvedDeps, AppError> {
     let pkg = package.to_string();
     let ver = version.to_string();
 
@@ -194,7 +208,32 @@ pub async fn resolve_all_deps(
             .map_err(|e| AppError::InvalidVersion(e.to_string()))?;
 
         match pubgrub::resolve(&provider, pkg, root_version) {
-            Ok(sol) => Ok(sol.into_iter().collect()),
+            Ok(sol) => {
+                let mut graph: HashMap<String, Vec<DepRef>> = HashMap::new();
+                for (pkg, ver) in &sol {
+                    let key = (pkg.clone(), ver.to_string());
+                    let deps = provider
+                        .deps_cache
+                        .borrow()
+                        .get(&key)
+                        .map(|deps| {
+                            let mut seen = std::collections::HashSet::new();
+                            deps.iter()
+                                .filter_map(|req| {
+                                    let name = req.name.to_string();
+                                    let version = sol.get(&name)?.to_string();
+                                    let node = DepRef { name, version };
+                                    seen.insert(node.clone()).then_some(node)
+                                })
+                                .collect()
+                        })
+                        .unwrap_or_default();
+                    graph.insert(pkg.clone(), deps);
+                }
+
+                let packages = sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
+                Ok(ResolvedDeps { packages, graph })
+            }
             Err(pubgrub::PubGrubError::NoSolution(mut tree)) => {
                 tree.collapse_no_versions();
                 Err(AppError::Resolution(pubgrub::DefaultStringReporter::report(&tree)))
@@ -204,7 +243,6 @@ pub async fn resolve_all_deps(
     })
     .await?
 }
-
 
 #[test]
 fn test_resolve() {
