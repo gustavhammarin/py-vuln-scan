@@ -1,6 +1,6 @@
+use std::{cell::RefCell, collections::HashSet};
 use std::collections::HashMap;
 use std::str::FromStr;
-use std::cell::RefCell;
 
 use pep508_rs::{
     VerbatimUrl, VersionOrUrl,
@@ -186,28 +186,30 @@ pub struct DepRef {
     pub name: String,
     pub version: String,
 }
-
+#[derive(serde::Serialize, Clone, PartialEq, Eq, Hash)]
+pub struct PackageRef {
+    pub name: String,
+    pub version: String,
+    pub depends_on: Vec<Box<PackageRef>>,
+}
 #[derive(serde::Serialize)]
 pub struct ResolvedDeps {
     /// Flat map: package name → resolved version string (used for OSV lookups)
     pub packages: HashMap<String, String>,
     /// Adjacency list: package name → direct dependencies with resolved versions
-    pub graph: HashMap<String, Vec<DepRef>>,
-}
+    pub graph: PackageRef,
+} 
 
-pub async fn resolve_all_deps(
-    package: &str,
-    version: &str,
-) -> Result<ResolvedDeps, AppError> {
+pub async fn resolve_all_deps(package: &str, version: &str) -> Result<ResolvedDeps, AppError> {
     let pkg = package.to_string();
     let ver = version.to_string();
 
     tokio::task::spawn_blocking(move || {
         let provider = PyPIProvider::new();
-        let root_version = Version::from_str(&ver)
-            .map_err(|e| AppError::InvalidVersion(e.to_string()))?;
+        let root_version =
+            Version::from_str(&ver).map_err(|e| AppError::InvalidVersion(e.to_string()))?;
 
-        match pubgrub::resolve(&provider, pkg, root_version) {
+        match pubgrub::resolve(&provider, pkg.clone(), root_version) {
             Ok(sol) => {
                 let mut graph: HashMap<String, Vec<DepRef>> = HashMap::new();
                 for (pkg, ver) in &sol {
@@ -228,20 +230,58 @@ pub async fn resolve_all_deps(
                                 .collect()
                         })
                         .unwrap_or_default();
-                    graph.insert(pkg.clone(), deps);
+                    graph.insert(
+                        pkg.clone(),
+                        deps,
+                    );
                 }
 
-                let packages = sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
-                Ok(ResolvedDeps { packages, graph })
+                let packages: HashMap<String, String> = sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
+                let root_ver = packages.get(&pkg).cloned().unwrap_or_default();
+
+                let mut visited: HashSet<String> = HashSet::new();
+
+                let tree = sort_graph(&pkg, &root_ver, &graph, &mut visited);
+
+                Ok(ResolvedDeps { packages, graph: tree })
             }
             Err(pubgrub::PubGrubError::NoSolution(mut tree)) => {
                 tree.collapse_no_versions();
-                Err(AppError::Resolution(pubgrub::DefaultStringReporter::report(&tree)))
+                Err(AppError::Resolution(
+                    pubgrub::DefaultStringReporter::report(&tree),
+                ))
             }
             Err(e) => Err(AppError::Resolution(e.to_string())),
         }
     })
     .await?
+}
+
+pub fn sort_graph(
+    root: &str,
+    root_ver: &str,
+    unsorted: &HashMap<String, Vec<DepRef>>,
+    visited: &mut HashSet<String>
+) -> PackageRef {
+    let key = format!("{}@{}", root, root_ver);
+
+    if !visited.insert(key){
+        return PackageRef { name: root.to_string(), version: root_ver.to_string(), depends_on: vec![] }
+    }
+
+    let deps = unsorted
+        .get(root)
+        .cloned()
+        .unwrap_or_default();
+
+    PackageRef {
+        name: root.to_string(),
+        version: root_ver.to_string(),
+        depends_on: deps
+            .iter()
+            .map(|dep| Box::new(sort_graph(&dep.name, &dep.version, unsorted, visited)))
+            .collect(),
+    }
 }
 
 #[test]

@@ -1,798 +1,854 @@
 {
   "packages": {
-    "graphene": "3.4.3",
-    "contourpy": "1.3.3",
-    "pyyaml": "6.0.3",
-    "typing-inspection": "0.4.2",
-    "scikit-learn": "1.8.0",
-    "six": "1.17.0",
-    "tqdm": "4.67.3",
-    "tzdata": "2026.1",
-    "sqlalchemy": "2.0.49",
-    "multiprocess": "0.70.19",
-    "fonttools": "4.62.1",
-    "markdown-it-py": "4.0.0",
-    "rich": "14.3.3",
-    "sagemaker-mlflow": "0.2.0",
-    "numpy": "1.26.4",
-    "packaging": "24.2",
-    "cloudpickle": "2.2.1",
-    "pyarrow": "15.0.2",
-    "matplotlib": "3.10.8",
-    "charset-normalizer": "3.4.7",
-    "graphql-core": "3.2.8",
-    "jmespath": "1.1.0",
-    "annotated-types": "0.7.0",
-    "threadpoolctl": "3.6.0",
-    "mako": "1.3.10",
-    "importlib-metadata": "6.11.0",
-    "gunicorn": "22.0.0",
-    "platformdirs": "4.9.4",
-    "dill": "0.4.1",
-    "python-dateutil": "2.9.0.post0",
-    "smmap": "5.0.3",
-    "s3transfer": "0.16.0",
-    "cachetools": "5.5.2",
-    "pyparsing": "3.3.2",
-    "rpds-py": "0.30.0",
-    "idna": "3.11",
-    "gitdb": "4.0.12",
-    "pathos": "0.3.5",
-    "querystring-parser": "1.2.4",
-    "attrs": "23.2.0",
-    "mdurl": "0.1.2",
-    "typing-extensions": "4.15.0",
-    "protobuf": "4.25.9",
-    "opentelemetry-api": "1.0.0",
-    "jinja2": "3.1.6",
-    "alembic": "1.18.4",
-    "mock": "4.0.3",
-    "botocore": "1.42.84",
-    "ppft": "1.7.8",
-    "certifi": "2026.2.25",
-    "click": "8.3.2",
-    "tblib": "3.2.2",
-    "mlflow": "2.13.2",
-    "kiwisolver": "1.5.0",
-    "zipp": "3.23.0",
-    "entrypoints": "0.4",
-    "pydantic": "2.12.5",
-    "opentelemetry-sdk": "1.0.0",
-    "jsonschema": "4.26.0",
-    "graphql-relay": "3.2.0",
-    "boto3": "1.42.84",
-    "sqlparse": "0.5.5",
-    "pandas": "2.3.3",
-    "sagemaker-core": "1.0.77",
-    "pygments": "2.20.0",
-    "schema": "0.7.8",
-    "gitpython": "3.1.46",
-    "blinker": "1.9.0",
-    "docker": "7.1.0",
-    "pytz": "2024.2",
-    "joblib": "1.5.3",
-    "sagemaker": "2.232.2",
-    "jsonschema-specifications": "2025.9.1",
-    "flask": "3.1.3",
-    "itsdangerous": "2.2.0",
-    "urllib3": "2.6.3",
-    "cycler": "0.12.1",
-    "smdebug-rulesconfig": "1.0.1",
-    "requests": "2.33.1",
-    "scipy": "1.17.1",
-    "greenlet": "3.3.2",
-    "pydantic-core": "2.41.5",
-    "google-pasta": "0.2.0",
-    "werkzeug": "3.1.8",
-    "referencing": "0.37.0",
     "markupsafe": "3.0.3",
+    "jinja2": "3.1.6",
+    "opentelemetry-sdk": "1.0.0",
+    "platformdirs": "4.9.4",
+    "python-dateutil": "2.9.0.post0",
+    "jsonschema-specifications": "2025.9.1",
+    "idna": "3.11",
+    "markdown": "3.10.2",
     "pox": "0.3.7",
-    "pillow": "12.2.0",
+    "packaging": "24.2",
     "psutil": "7.2.2",
-    "markdown": "3.10.2"
+    "boto3": "1.42.84",
+    "charset-normalizer": "3.4.7",
+    "typing-extensions": "4.15.0",
+    "numpy": "1.26.4",
+    "typing-inspection": "0.4.2",
+    "sqlparse": "0.5.5",
+    "markdown-it-py": "4.0.0",
+    "s3transfer": "0.16.0",
+    "pyparsing": "3.3.2",
+    "pygments": "2.20.0",
+    "kiwisolver": "1.5.0",
+    "cloudpickle": "2.2.1",
+    "schema": "0.7.8",
+    "fonttools": "4.62.1",
+    "matplotlib": "3.10.8",
+    "scipy": "1.17.1",
+    "alembic": "1.18.4",
+    "pathos": "0.3.5",
+    "mako": "1.3.10",
+    "sagemaker-mlflow": "0.2.0",
+    "itsdangerous": "2.2.0",
+    "rich": "14.3.3",
+    "urllib3": "2.6.3",
+    "flask": "3.1.3",
+    "rpds-py": "0.30.0",
+    "six": "1.17.0",
+    "sagemaker": "2.232.2",
+    "click": "8.3.2",
+    "pyyaml": "6.0.3",
+    "botocore": "1.42.84",
+    "pandas": "2.3.3",
+    "multiprocess": "0.70.19",
+    "tblib": "3.2.2",
+    "attrs": "23.2.0",
+    "joblib": "1.5.3",
+    "google-pasta": "0.2.0",
+    "entrypoints": "0.4",
+    "graphql-core": "3.2.8",
+    "referencing": "0.37.0",
+    "pydantic-core": "2.41.5",
+    "sagemaker-core": "1.0.77",
+    "mdurl": "0.1.2",
+    "tzdata": "2026.1",
+    "greenlet": "3.3.2",
+    "blinker": "1.9.0",
+    "pyarrow": "15.0.2",
+    "gunicorn": "22.0.0",
+    "gitpython": "3.1.46",
+    "zipp": "3.23.0",
+    "jmespath": "1.1.0",
+    "sqlalchemy": "2.0.49",
+    "annotated-types": "0.7.0",
+    "opentelemetry-api": "1.0.0",
+    "importlib-metadata": "6.11.0",
+    "jsonschema": "4.26.0",
+    "certifi": "2026.2.25",
+    "threadpoolctl": "3.6.0",
+    "contourpy": "1.3.3",
+    "graphql-relay": "3.2.0",
+    "gitdb": "4.0.12",
+    "smdebug-rulesconfig": "1.0.1",
+    "cycler": "0.12.1",
+    "scikit-learn": "1.8.0",
+    "graphene": "3.4.3",
+    "protobuf": "4.25.9",
+    "mlflow": "2.13.2",
+    "pytz": "2024.2",
+    "pillow": "12.2.0",
+    "tqdm": "4.67.3",
+    "requests": "2.33.1",
+    "pydantic": "2.12.5",
+    "cachetools": "5.5.2",
+    "mock": "4.0.3",
+    "ppft": "1.7.8",
+    "werkzeug": "3.1.8",
+    "dill": "0.4.1",
+    "smmap": "5.0.3",
+    "docker": "7.1.0",
+    "querystring-parser": "1.2.4"
   },
   "graph": {
-    "pathos": [
-      {
-        "name": "ppft",
-        "version": "1.7.8"
-      },
-      {
-        "name": "dill",
-        "version": "0.4.1"
-      },
-      {
-        "name": "pox",
-        "version": "0.3.7"
-      },
-      {
-        "name": "multiprocess",
-        "version": "0.70.19"
-      }
-    ],
-    "flask": [
-      {
-        "name": "blinker",
-        "version": "1.9.0"
-      },
-      {
-        "name": "click",
-        "version": "8.3.2"
-      },
-      {
-        "name": "itsdangerous",
-        "version": "2.2.0"
-      },
-      {
-        "name": "jinja2",
-        "version": "3.1.6"
-      },
-      {
-        "name": "markupsafe",
-        "version": "3.0.3"
-      },
-      {
-        "name": "werkzeug",
-        "version": "3.1.8"
-      }
-    ],
-    "markdown-it-py": [
-      {
-        "name": "mdurl",
-        "version": "0.1.2"
-      }
-    ],
-    "click": [],
-    "sqlparse": [],
-    "threadpoolctl": [],
-    "pyyaml": [],
-    "sqlalchemy": [
-      {
-        "name": "greenlet",
-        "version": "3.3.2"
-      },
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "pydantic-core": [
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "sagemaker": [
+    "name": "sagemaker",
+    "version": "2.232.2",
+    "depends_on": [
       {
         "name": "attrs",
-        "version": "23.2.0"
+        "version": "23.2.0",
+        "depends_on": []
       },
       {
         "name": "boto3",
-        "version": "1.42.84"
+        "version": "1.42.84",
+        "depends_on": [
+          {
+            "name": "botocore",
+            "version": "1.42.84",
+            "depends_on": [
+              {
+                "name": "jmespath",
+                "version": "1.1.0",
+                "depends_on": []
+              },
+              {
+                "name": "python-dateutil",
+                "version": "2.9.0.post0",
+                "depends_on": [
+                  {
+                    "name": "six",
+                    "version": "1.17.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "urllib3",
+                "version": "2.6.3",
+                "depends_on": []
+              }
+            ]
+          },
+          {
+            "name": "jmespath",
+            "version": "1.1.0",
+            "depends_on": []
+          },
+          {
+            "name": "s3transfer",
+            "version": "0.16.0",
+            "depends_on": [
+              {
+                "name": "botocore",
+                "version": "1.42.84",
+                "depends_on": []
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "cloudpickle",
-        "version": "2.2.1"
+        "version": "2.2.1",
+        "depends_on": []
       },
       {
         "name": "docker",
-        "version": "7.1.0"
+        "version": "7.1.0",
+        "depends_on": [
+          {
+            "name": "requests",
+            "version": "2.33.1",
+            "depends_on": [
+              {
+                "name": "charset-normalizer",
+                "version": "3.4.7",
+                "depends_on": []
+              },
+              {
+                "name": "idna",
+                "version": "3.11",
+                "depends_on": []
+              },
+              {
+                "name": "urllib3",
+                "version": "2.6.3",
+                "depends_on": []
+              },
+              {
+                "name": "certifi",
+                "version": "2026.2.25",
+                "depends_on": []
+              }
+            ]
+          },
+          {
+            "name": "urllib3",
+            "version": "2.6.3",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "google-pasta",
-        "version": "0.2.0"
+        "version": "0.2.0",
+        "depends_on": [
+          {
+            "name": "six",
+            "version": "1.17.0",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "importlib-metadata",
-        "version": "6.11.0"
+        "version": "6.11.0",
+        "depends_on": [
+          {
+            "name": "zipp",
+            "version": "3.23.0",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "jsonschema",
-        "version": "4.26.0"
+        "version": "4.26.0",
+        "depends_on": [
+          {
+            "name": "attrs",
+            "version": "23.2.0",
+            "depends_on": []
+          },
+          {
+            "name": "jsonschema-specifications",
+            "version": "2025.9.1",
+            "depends_on": [
+              {
+                "name": "referencing",
+                "version": "0.37.0",
+                "depends_on": [
+                  {
+                    "name": "attrs",
+                    "version": "23.2.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "rpds-py",
+                    "version": "0.30.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "typing-extensions",
+                    "version": "4.15.0",
+                    "depends_on": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "referencing",
+            "version": "0.37.0",
+            "depends_on": []
+          },
+          {
+            "name": "rpds-py",
+            "version": "0.30.0",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "numpy",
-        "version": "1.26.4"
+        "version": "1.26.4",
+        "depends_on": []
       },
       {
         "name": "packaging",
-        "version": "24.2"
+        "version": "24.2",
+        "depends_on": []
       },
       {
         "name": "pandas",
-        "version": "2.3.3"
+        "version": "2.3.3",
+        "depends_on": [
+          {
+            "name": "numpy",
+            "version": "1.26.4",
+            "depends_on": []
+          },
+          {
+            "name": "python-dateutil",
+            "version": "2.9.0.post0",
+            "depends_on": []
+          },
+          {
+            "name": "pytz",
+            "version": "2024.2",
+            "depends_on": []
+          },
+          {
+            "name": "tzdata",
+            "version": "2026.1",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "pathos",
-        "version": "0.3.5"
+        "version": "0.3.5",
+        "depends_on": [
+          {
+            "name": "ppft",
+            "version": "1.7.8",
+            "depends_on": []
+          },
+          {
+            "name": "dill",
+            "version": "0.4.1",
+            "depends_on": []
+          },
+          {
+            "name": "pox",
+            "version": "0.3.7",
+            "depends_on": []
+          },
+          {
+            "name": "multiprocess",
+            "version": "0.70.19",
+            "depends_on": [
+              {
+                "name": "dill",
+                "version": "0.4.1",
+                "depends_on": []
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "platformdirs",
-        "version": "4.9.4"
+        "version": "4.9.4",
+        "depends_on": []
       },
       {
         "name": "protobuf",
-        "version": "4.25.9"
+        "version": "4.25.9",
+        "depends_on": []
       },
       {
         "name": "psutil",
-        "version": "7.2.2"
+        "version": "7.2.2",
+        "depends_on": []
       },
       {
         "name": "pyyaml",
-        "version": "6.0.3"
+        "version": "6.0.3",
+        "depends_on": []
       },
       {
         "name": "requests",
-        "version": "2.33.1"
+        "version": "2.33.1",
+        "depends_on": []
       },
       {
         "name": "sagemaker-core",
-        "version": "1.0.77"
+        "version": "1.0.77",
+        "depends_on": [
+          {
+            "name": "boto3",
+            "version": "1.42.84",
+            "depends_on": []
+          },
+          {
+            "name": "pydantic",
+            "version": "2.12.5",
+            "depends_on": [
+              {
+                "name": "annotated-types",
+                "version": "0.7.0",
+                "depends_on": []
+              },
+              {
+                "name": "pydantic-core",
+                "version": "2.41.5",
+                "depends_on": [
+                  {
+                    "name": "typing-extensions",
+                    "version": "4.15.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "typing-extensions",
+                "version": "4.15.0",
+                "depends_on": []
+              },
+              {
+                "name": "typing-inspection",
+                "version": "0.4.2",
+                "depends_on": [
+                  {
+                    "name": "typing-extensions",
+                    "version": "4.15.0",
+                    "depends_on": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "pyyaml",
+            "version": "6.0.3",
+            "depends_on": []
+          },
+          {
+            "name": "jsonschema",
+            "version": "4.26.0",
+            "depends_on": []
+          },
+          {
+            "name": "platformdirs",
+            "version": "4.9.4",
+            "depends_on": []
+          },
+          {
+            "name": "rich",
+            "version": "14.3.3",
+            "depends_on": [
+              {
+                "name": "markdown-it-py",
+                "version": "4.0.0",
+                "depends_on": [
+                  {
+                    "name": "mdurl",
+                    "version": "0.1.2",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "pygments",
+                "version": "2.20.0",
+                "depends_on": []
+              }
+            ]
+          },
+          {
+            "name": "mock",
+            "version": "4.0.3",
+            "depends_on": []
+          },
+          {
+            "name": "importlib-metadata",
+            "version": "6.11.0",
+            "depends_on": []
+          }
+        ]
       },
       {
         "name": "sagemaker-mlflow",
-        "version": "0.2.0"
+        "version": "0.2.0",
+        "depends_on": [
+          {
+            "name": "boto3",
+            "version": "1.42.84",
+            "depends_on": []
+          },
+          {
+            "name": "mlflow",
+            "version": "2.13.2",
+            "depends_on": [
+              {
+                "name": "flask",
+                "version": "3.1.3",
+                "depends_on": [
+                  {
+                    "name": "blinker",
+                    "version": "1.9.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "click",
+                    "version": "8.3.2",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "itsdangerous",
+                    "version": "2.2.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "jinja2",
+                    "version": "3.1.6",
+                    "depends_on": [
+                      {
+                        "name": "markupsafe",
+                        "version": "3.0.3",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "markupsafe",
+                    "version": "3.0.3",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "werkzeug",
+                    "version": "3.1.8",
+                    "depends_on": [
+                      {
+                        "name": "markupsafe",
+                        "version": "3.0.3",
+                        "depends_on": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "alembic",
+                "version": "1.18.4",
+                "depends_on": [
+                  {
+                    "name": "sqlalchemy",
+                    "version": "2.0.49",
+                    "depends_on": [
+                      {
+                        "name": "greenlet",
+                        "version": "3.3.2",
+                        "depends_on": []
+                      },
+                      {
+                        "name": "typing-extensions",
+                        "version": "4.15.0",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "mako",
+                    "version": "1.3.10",
+                    "depends_on": [
+                      {
+                        "name": "markupsafe",
+                        "version": "3.0.3",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "typing-extensions",
+                    "version": "4.15.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "cachetools",
+                "version": "5.5.2",
+                "depends_on": []
+              },
+              {
+                "name": "click",
+                "version": "8.3.2",
+                "depends_on": []
+              },
+              {
+                "name": "cloudpickle",
+                "version": "2.2.1",
+                "depends_on": []
+              },
+              {
+                "name": "docker",
+                "version": "7.1.0",
+                "depends_on": []
+              },
+              {
+                "name": "entrypoints",
+                "version": "0.4",
+                "depends_on": []
+              },
+              {
+                "name": "gitpython",
+                "version": "3.1.46",
+                "depends_on": [
+                  {
+                    "name": "gitdb",
+                    "version": "4.0.12",
+                    "depends_on": [
+                      {
+                        "name": "smmap",
+                        "version": "5.0.3",
+                        "depends_on": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "graphene",
+                "version": "3.4.3",
+                "depends_on": [
+                  {
+                    "name": "graphql-core",
+                    "version": "3.2.8",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "graphql-relay",
+                    "version": "3.2.0",
+                    "depends_on": [
+                      {
+                        "name": "graphql-core",
+                        "version": "3.2.8",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "python-dateutil",
+                    "version": "2.9.0.post0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "typing-extensions",
+                    "version": "4.15.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "importlib-metadata",
+                "version": "6.11.0",
+                "depends_on": []
+              },
+              {
+                "name": "markdown",
+                "version": "3.10.2",
+                "depends_on": []
+              },
+              {
+                "name": "matplotlib",
+                "version": "3.10.8",
+                "depends_on": [
+                  {
+                    "name": "contourpy",
+                    "version": "1.3.3",
+                    "depends_on": [
+                      {
+                        "name": "numpy",
+                        "version": "1.26.4",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "cycler",
+                    "version": "0.12.1",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "fonttools",
+                    "version": "4.62.1",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "kiwisolver",
+                    "version": "1.5.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "numpy",
+                    "version": "1.26.4",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "packaging",
+                    "version": "24.2",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "pillow",
+                    "version": "12.2.0",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "pyparsing",
+                    "version": "3.3.2",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "python-dateutil",
+                    "version": "2.9.0.post0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "numpy",
+                "version": "1.26.4",
+                "depends_on": []
+              },
+              {
+                "name": "opentelemetry-api",
+                "version": "1.0.0",
+                "depends_on": []
+              },
+              {
+                "name": "opentelemetry-sdk",
+                "version": "1.0.0",
+                "depends_on": [
+                  {
+                    "name": "opentelemetry-api",
+                    "version": "1.0.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "packaging",
+                "version": "24.2",
+                "depends_on": []
+              },
+              {
+                "name": "pandas",
+                "version": "2.3.3",
+                "depends_on": []
+              },
+              {
+                "name": "protobuf",
+                "version": "4.25.9",
+                "depends_on": []
+              },
+              {
+                "name": "pyarrow",
+                "version": "15.0.2",
+                "depends_on": [
+                  {
+                    "name": "numpy",
+                    "version": "1.26.4",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "pytz",
+                "version": "2024.2",
+                "depends_on": []
+              },
+              {
+                "name": "pyyaml",
+                "version": "6.0.3",
+                "depends_on": []
+              },
+              {
+                "name": "querystring-parser",
+                "version": "1.2.4",
+                "depends_on": []
+              },
+              {
+                "name": "requests",
+                "version": "2.33.1",
+                "depends_on": []
+              },
+              {
+                "name": "scikit-learn",
+                "version": "1.8.0",
+                "depends_on": [
+                  {
+                    "name": "numpy",
+                    "version": "1.26.4",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "scipy",
+                    "version": "1.17.1",
+                    "depends_on": [
+                      {
+                        "name": "numpy",
+                        "version": "1.26.4",
+                        "depends_on": []
+                      }
+                    ]
+                  },
+                  {
+                    "name": "joblib",
+                    "version": "1.5.3",
+                    "depends_on": []
+                  },
+                  {
+                    "name": "threadpoolctl",
+                    "version": "3.6.0",
+                    "depends_on": []
+                  }
+                ]
+              },
+              {
+                "name": "scipy",
+                "version": "1.17.1",
+                "depends_on": []
+              },
+              {
+                "name": "sqlalchemy",
+                "version": "2.0.49",
+                "depends_on": []
+              },
+              {
+                "name": "sqlparse",
+                "version": "0.5.5",
+                "depends_on": []
+              },
+              {
+                "name": "jinja2",
+                "version": "3.1.6",
+                "depends_on": []
+              },
+              {
+                "name": "gunicorn",
+                "version": "22.0.0",
+                "depends_on": [
+                  {
+                    "name": "packaging",
+                    "version": "24.2",
+                    "depends_on": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "schema",
-        "version": "0.7.8"
+        "version": "0.7.8",
+        "depends_on": []
       },
       {
         "name": "smdebug-rulesconfig",
-        "version": "1.0.1"
+        "version": "1.0.1",
+        "depends_on": []
       },
       {
         "name": "tblib",
-        "version": "3.2.2"
+        "version": "3.2.2",
+        "depends_on": []
       },
       {
         "name": "tqdm",
-        "version": "4.67.3"
+        "version": "4.67.3",
+        "depends_on": []
       },
       {
         "name": "urllib3",
-        "version": "2.6.3"
+        "version": "2.6.3",
+        "depends_on": []
       }
-    ],
-    "pytz": [],
-    "pydantic": [
-      {
-        "name": "annotated-types",
-        "version": "0.7.0"
-      },
-      {
-        "name": "pydantic-core",
-        "version": "2.41.5"
-      },
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      },
-      {
-        "name": "typing-inspection",
-        "version": "0.4.2"
-      }
-    ],
-    "numpy": [],
-    "sagemaker-core": [
-      {
-        "name": "boto3",
-        "version": "1.42.84"
-      },
-      {
-        "name": "pydantic",
-        "version": "2.12.5"
-      },
-      {
-        "name": "pyyaml",
-        "version": "6.0.3"
-      },
-      {
-        "name": "jsonschema",
-        "version": "4.26.0"
-      },
-      {
-        "name": "platformdirs",
-        "version": "4.9.4"
-      },
-      {
-        "name": "rich",
-        "version": "14.3.3"
-      },
-      {
-        "name": "mock",
-        "version": "4.0.3"
-      },
-      {
-        "name": "importlib-metadata",
-        "version": "6.11.0"
-      }
-    ],
-    "pillow": [],
-    "referencing": [
-      {
-        "name": "attrs",
-        "version": "23.2.0"
-      },
-      {
-        "name": "rpds-py",
-        "version": "0.30.0"
-      },
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "sagemaker-mlflow": [
-      {
-        "name": "boto3",
-        "version": "1.42.84"
-      },
-      {
-        "name": "mlflow",
-        "version": "2.13.2"
-      }
-    ],
-    "smmap": [],
-    "contourpy": [
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      }
-    ],
-    "gitpython": [
-      {
-        "name": "gitdb",
-        "version": "4.0.12"
-      }
-    ],
-    "typing-extensions": [],
-    "mlflow": [
-      {
-        "name": "flask",
-        "version": "3.1.3"
-      },
-      {
-        "name": "alembic",
-        "version": "1.18.4"
-      },
-      {
-        "name": "cachetools",
-        "version": "5.5.2"
-      },
-      {
-        "name": "click",
-        "version": "8.3.2"
-      },
-      {
-        "name": "cloudpickle",
-        "version": "2.2.1"
-      },
-      {
-        "name": "docker",
-        "version": "7.1.0"
-      },
-      {
-        "name": "entrypoints",
-        "version": "0.4"
-      },
-      {
-        "name": "gitpython",
-        "version": "3.1.46"
-      },
-      {
-        "name": "graphene",
-        "version": "3.4.3"
-      },
-      {
-        "name": "importlib-metadata",
-        "version": "6.11.0"
-      },
-      {
-        "name": "markdown",
-        "version": "3.10.2"
-      },
-      {
-        "name": "matplotlib",
-        "version": "3.10.8"
-      },
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      },
-      {
-        "name": "opentelemetry-api",
-        "version": "1.0.0"
-      },
-      {
-        "name": "opentelemetry-sdk",
-        "version": "1.0.0"
-      },
-      {
-        "name": "packaging",
-        "version": "24.2"
-      },
-      {
-        "name": "pandas",
-        "version": "2.3.3"
-      },
-      {
-        "name": "protobuf",
-        "version": "4.25.9"
-      },
-      {
-        "name": "pyarrow",
-        "version": "15.0.2"
-      },
-      {
-        "name": "pytz",
-        "version": "2024.2"
-      },
-      {
-        "name": "pyyaml",
-        "version": "6.0.3"
-      },
-      {
-        "name": "querystring-parser",
-        "version": "1.2.4"
-      },
-      {
-        "name": "requests",
-        "version": "2.33.1"
-      },
-      {
-        "name": "scikit-learn",
-        "version": "1.8.0"
-      },
-      {
-        "name": "scipy",
-        "version": "1.17.1"
-      },
-      {
-        "name": "sqlalchemy",
-        "version": "2.0.49"
-      },
-      {
-        "name": "sqlparse",
-        "version": "0.5.5"
-      },
-      {
-        "name": "jinja2",
-        "version": "3.1.6"
-      },
-      {
-        "name": "gunicorn",
-        "version": "22.0.0"
-      }
-    ],
-    "typing-inspection": [
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "idna": [],
-    "mako": [
-      {
-        "name": "markupsafe",
-        "version": "3.0.3"
-      }
-    ],
-    "pygments": [],
-    "smdebug-rulesconfig": [],
-    "rpds-py": [],
-    "graphene": [
-      {
-        "name": "graphql-core",
-        "version": "3.2.8"
-      },
-      {
-        "name": "graphql-relay",
-        "version": "3.2.0"
-      },
-      {
-        "name": "python-dateutil",
-        "version": "2.9.0.post0"
-      },
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "mock": [],
-    "werkzeug": [
-      {
-        "name": "markupsafe",
-        "version": "3.0.3"
-      }
-    ],
-    "annotated-types": [],
-    "markdown": [],
-    "scipy": [
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      }
-    ],
-    "alembic": [
-      {
-        "name": "sqlalchemy",
-        "version": "2.0.49"
-      },
-      {
-        "name": "mako",
-        "version": "1.3.10"
-      },
-      {
-        "name": "typing-extensions",
-        "version": "4.15.0"
-      }
-    ],
-    "graphql-relay": [
-      {
-        "name": "graphql-core",
-        "version": "3.2.8"
-      }
-    ],
-    "tqdm": [],
-    "certifi": [],
-    "cachetools": [],
-    "s3transfer": [
-      {
-        "name": "botocore",
-        "version": "1.42.84"
-      }
-    ],
-    "cloudpickle": [],
-    "docker": [
-      {
-        "name": "requests",
-        "version": "2.33.1"
-      },
-      {
-        "name": "urllib3",
-        "version": "2.6.3"
-      }
-    ],
-    "joblib": [],
-    "jsonschema": [
-      {
-        "name": "attrs",
-        "version": "23.2.0"
-      },
-      {
-        "name": "jsonschema-specifications",
-        "version": "2025.9.1"
-      },
-      {
-        "name": "referencing",
-        "version": "0.37.0"
-      },
-      {
-        "name": "rpds-py",
-        "version": "0.30.0"
-      }
-    ],
-    "cycler": [],
-    "six": [],
-    "protobuf": [],
-    "packaging": [],
-    "gunicorn": [
-      {
-        "name": "packaging",
-        "version": "24.2"
-      }
-    ],
-    "google-pasta": [
-      {
-        "name": "six",
-        "version": "1.17.0"
-      }
-    ],
-    "opentelemetry-api": [],
-    "blinker": [],
-    "entrypoints": [],
-    "greenlet": [],
-    "jinja2": [
-      {
-        "name": "markupsafe",
-        "version": "3.0.3"
-      }
-    ],
-    "rich": [
-      {
-        "name": "markdown-it-py",
-        "version": "4.0.0"
-      },
-      {
-        "name": "pygments",
-        "version": "2.20.0"
-      }
-    ],
-    "fonttools": [],
-    "pandas": [
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      },
-      {
-        "name": "python-dateutil",
-        "version": "2.9.0.post0"
-      },
-      {
-        "name": "pytz",
-        "version": "2024.2"
-      },
-      {
-        "name": "tzdata",
-        "version": "2026.1"
-      }
-    ],
-    "opentelemetry-sdk": [
-      {
-        "name": "opentelemetry-api",
-        "version": "1.0.0"
-      }
-    ],
-    "itsdangerous": [],
-    "kiwisolver": [],
-    "tzdata": [],
-    "scikit-learn": [
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      },
-      {
-        "name": "scipy",
-        "version": "1.17.1"
-      },
-      {
-        "name": "joblib",
-        "version": "1.5.3"
-      },
-      {
-        "name": "threadpoolctl",
-        "version": "3.6.0"
-      }
-    ],
-    "zipp": [],
-    "multiprocess": [
-      {
-        "name": "dill",
-        "version": "0.4.1"
-      }
-    ],
-    "psutil": [],
-    "botocore": [
-      {
-        "name": "jmespath",
-        "version": "1.1.0"
-      },
-      {
-        "name": "python-dateutil",
-        "version": "2.9.0.post0"
-      },
-      {
-        "name": "urllib3",
-        "version": "2.6.3"
-      }
-    ],
-    "matplotlib": [
-      {
-        "name": "contourpy",
-        "version": "1.3.3"
-      },
-      {
-        "name": "cycler",
-        "version": "0.12.1"
-      },
-      {
-        "name": "fonttools",
-        "version": "4.62.1"
-      },
-      {
-        "name": "kiwisolver",
-        "version": "1.5.0"
-      },
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      },
-      {
-        "name": "packaging",
-        "version": "24.2"
-      },
-      {
-        "name": "pillow",
-        "version": "12.2.0"
-      },
-      {
-        "name": "pyparsing",
-        "version": "3.3.2"
-      },
-      {
-        "name": "python-dateutil",
-        "version": "2.9.0.post0"
-      }
-    ],
-    "markupsafe": [],
-    "querystring-parser": [],
-    "graphql-core": [],
-    "charset-normalizer": [],
-    "pyarrow": [
-      {
-        "name": "numpy",
-        "version": "1.26.4"
-      }
-    ],
-    "platformdirs": [],
-    "mdurl": [],
-    "urllib3": [],
-    "tblib": [],
-    "python-dateutil": [
-      {
-        "name": "six",
-        "version": "1.17.0"
-      }
-    ],
-    "pyparsing": [],
-    "attrs": [],
-    "requests": [
-      {
-        "name": "charset-normalizer",
-        "version": "3.4.7"
-      },
-      {
-        "name": "idna",
-        "version": "3.11"
-      },
-      {
-        "name": "urllib3",
-        "version": "2.6.3"
-      },
-      {
-        "name": "certifi",
-        "version": "2026.2.25"
-      }
-    ],
-    "ppft": [],
-    "boto3": [
-      {
-        "name": "botocore",
-        "version": "1.42.84"
-      },
-      {
-        "name": "jmespath",
-        "version": "1.1.0"
-      },
-      {
-        "name": "s3transfer",
-        "version": "0.16.0"
-      }
-    ],
-    "importlib-metadata": [
-      {
-        "name": "zipp",
-        "version": "3.23.0"
-      }
-    ],
-    "gitdb": [
-      {
-        "name": "smmap",
-        "version": "5.0.3"
-      }
-    ],
-    "dill": [],
-    "pox": [],
-    "jsonschema-specifications": [
-      {
-        "name": "referencing",
-        "version": "0.37.0"
-      }
-    ],
-    "jmespath": [],
-    "schema": []
+    ]
   }
 }

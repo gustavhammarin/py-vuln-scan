@@ -1,450 +1,6 @@
 [
   {
     "schema_version": "1.7.3",
-    "id": "PYSEC-2024-161",
-    "modified": "2025-01-14T05:57:19.017909Z",
-    "published": "2024-11-28T17:15:48Z",
-    "withdrawn": null,
-    "aliases": [
-      "CVE-2024-52338"
-    ],
-    "upstream": null,
-    "related": null,
-    "summary": null,
-    "details": "Deserialization of untrusted data in IPC and Parquet readers in the Apache Arrow R package versions 4.0.0 through 16.1.0 allows arbitrary code execution. An application is vulnerable if it \nreads Arrow IPC, Feather or Parquet data from untrusted sources (for \nexample, user-supplied input files). This vulnerability only affects the arrow R package, not other Apache Arrow \nimplementations or bindings unless those bindings are specifically used via the R package (for example, an R application that embeds a Python interpreter and uses PyArrow to read files from untrusted sources is still vulnerable if the arrow R package is an affected version). It is recommended that users of the arrow R package upgrade to 17.0.0 or later. Similarly, it\n is recommended that downstream libraries upgrade their dependency \nrequirements to arrow 17.0.0 or later. If using an affected\nversion of the package, untrusted data can read into a Table and its internal to_data_frame() method can be used as a workaround (e.g., read_parquet(..., as_data_frame = FALSE)$to_data_frame()).\n\n\nThis issue affects the Apache Arrow R package: from 4.0.0 through 16.1.0.\n\n\nUsers are recommended to upgrade to version 17.0.0, which fixes the issue.",
-    "severity": null,
-    "affected": [
-      {
-        "package": {
-          "ecosystem": "PyPI",
-          "name": "pyarrow",
-          "purl": "pkg:pypi/pyarrow"
-        },
-        "severity": null,
-        "ranges": [
-          {
-            "type": "GIT",
-            "repo": "https://github.com/apache/arrow",
-            "events": [
-              {
-                "introduced": "0",
-                "fixed": null,
-                "last_affected": null,
-                "limit": null
-              },
-              {
-                "introduced": null,
-                "fixed": "801de2fbcf5bcbce0c019ed4b35ff3fc863b141b",
-                "last_affected": null,
-                "limit": null
-              }
-            ],
-            "database_specific": null
-          },
-          {
-            "type": "ECOSYSTEM",
-            "repo": null,
-            "events": [
-              {
-                "introduced": "4.0.0",
-                "fixed": null,
-                "last_affected": null,
-                "limit": null
-              },
-              {
-                "introduced": null,
-                "fixed": "17.0.0",
-                "last_affected": null,
-                "limit": null
-              }
-            ],
-            "database_specific": null
-          }
-        ],
-        "versions": [
-          "10.0.0",
-          "10.0.1",
-          "11.0.0",
-          "12.0.0",
-          "12.0.1",
-          "13.0.0",
-          "14.0.0",
-          "14.0.1",
-          "14.0.2",
-          "15.0.0",
-          "15.0.1",
-          "15.0.2",
-          "16.0.0",
-          "16.1.0",
-          "4.0.0",
-          "4.0.1",
-          "5.0.0",
-          "6.0.0",
-          "6.0.1",
-          "7.0.0",
-          "8.0.0",
-          "9.0.0"
-        ],
-        "ecosystem_specific": null,
-        "database_specific": {
-          "source": "https://github.com/pypa/advisory-database/blob/main/vulns/pyarrow/PYSEC-2024-161.yaml"
-        }
-      }
-    ],
-    "references": [
-      {
-        "type": "FIX",
-        "url": "https://github.com/apache/arrow/commit/801de2fbcf5bcbce0c019ed4b35ff3fc863b141b"
-      },
-      {
-        "type": "WEB",
-        "url": "https://lists.apache.org/thread/0rcbvj1gdp15lvm23zm601tjpq0k25vt"
-      },
-      {
-        "type": "WEB",
-        "url": "http://www.openwall.com/lists/oss-security/2024/11/28/3"
-      }
-    ],
-    "credits": null,
-    "database_specific": null
-  },
-  {
-    "schema_version": "1.7.3",
-    "id": "GHSA-7gcm-g887-7qv7",
-    "modified": "2026-02-05T16:35:34.839005Z",
-    "published": "2026-01-23T15:31:35Z",
-    "withdrawn": null,
-    "aliases": [
-      "CVE-2026-0994"
-    ],
-    "upstream": null,
-    "related": [
-      "CGA-jgjc-r94m-fgp2"
-    ],
-    "summary": "protobuf affected by a JSON recursion depth bypass",
-    "details": "A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any messages.\n\nDue to missing recursion depth accounting inside the internal Any-handling logic, an attacker can supply deeply nested Any structures that bypass the intended recursion limit, eventually exhausting Python’s recursion stack and causing a RecursionError.",
-    "severity": [
-      {
-        "type": "CVSS_V4",
-        "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "ecosystem": "PyPI",
-          "name": "protobuf",
-          "purl": "pkg:pypi/protobuf"
-        },
-        "severity": null,
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "repo": null,
-            "events": [
-              {
-                "introduced": "6.30.0rc1",
-                "fixed": null,
-                "last_affected": null,
-                "limit": null
-              },
-              {
-                "introduced": null,
-                "fixed": "6.33.5",
-                "last_affected": null,
-                "limit": null
-              }
-            ],
-            "database_specific": null
-          }
-        ],
-        "versions": [
-          "6.30.0",
-          "6.30.0rc1",
-          "6.30.0rc2",
-          "6.30.1",
-          "6.30.2",
-          "6.31.0",
-          "6.31.0rc1",
-          "6.31.0rc2",
-          "6.31.1",
-          "6.32.0",
-          "6.32.0rc1",
-          "6.32.0rc2",
-          "6.32.1",
-          "6.33.0",
-          "6.33.0rc1",
-          "6.33.0rc2",
-          "6.33.1",
-          "6.33.2",
-          "6.33.3",
-          "6.33.4"
-        ],
-        "ecosystem_specific": null,
-        "database_specific": {
-          "last_known_affected_version_range": "<= 6.33.4",
-          "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-7gcm-g887-7qv7/GHSA-7gcm-g887-7qv7.json"
-        }
-      },
-      {
-        "package": {
-          "ecosystem": "PyPI",
-          "name": "protobuf",
-          "purl": "pkg:pypi/protobuf"
-        },
-        "severity": null,
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "repo": null,
-            "events": [
-              {
-                "introduced": "0",
-                "fixed": null,
-                "last_affected": null,
-                "limit": null
-              },
-              {
-                "introduced": null,
-                "fixed": "5.29.6",
-                "last_affected": null,
-                "limit": null
-              }
-            ],
-            "database_specific": null
-          }
-        ],
-        "versions": [
-          "2.0.0beta",
-          "2.0.3",
-          "2.3.0",
-          "2.4.1",
-          "2.5.0",
-          "2.6.0",
-          "2.6.1",
-          "3.0.0",
-          "3.0.0a2",
-          "3.0.0a3",
-          "3.0.0b1",
-          "3.0.0b1.post1",
-          "3.0.0b1.post2",
-          "3.0.0b2",
-          "3.0.0b2.post1",
-          "3.0.0b2.post2",
-          "3.0.0b3",
-          "3.0.0b4",
-          "3.1.0",
-          "3.1.0.post1",
-          "3.10.0",
-          "3.10.0rc1",
-          "3.11.0",
-          "3.11.0rc1",
-          "3.11.0rc2",
-          "3.11.1",
-          "3.11.2",
-          "3.11.3",
-          "3.12.0",
-          "3.12.0rc1",
-          "3.12.0rc2",
-          "3.12.1",
-          "3.12.2",
-          "3.12.4",
-          "3.13.0",
-          "3.13.0rc3",
-          "3.14.0",
-          "3.14.0rc1",
-          "3.14.0rc2",
-          "3.14.0rc3",
-          "3.15.0",
-          "3.15.0rc1",
-          "3.15.0rc2",
-          "3.15.1",
-          "3.15.2",
-          "3.15.3",
-          "3.15.4",
-          "3.15.5",
-          "3.15.6",
-          "3.15.7",
-          "3.15.8",
-          "3.16.0",
-          "3.16.0rc1",
-          "3.16.0rc2",
-          "3.17.0",
-          "3.17.0rc1",
-          "3.17.0rc2",
-          "3.17.1",
-          "3.17.2",
-          "3.17.3",
-          "3.18.0",
-          "3.18.0rc1",
-          "3.18.0rc2",
-          "3.18.1",
-          "3.18.3",
-          "3.19.0",
-          "3.19.0rc1",
-          "3.19.0rc2",
-          "3.19.1",
-          "3.19.2",
-          "3.19.3",
-          "3.19.4",
-          "3.19.5",
-          "3.19.6",
-          "3.2.0",
-          "3.2.0rc1",
-          "3.2.0rc1.post1",
-          "3.2.0rc2",
-          "3.20.0",
-          "3.20.0rc1",
-          "3.20.0rc2",
-          "3.20.1",
-          "3.20.1rc1",
-          "3.20.2",
-          "3.20.3",
-          "3.3.0",
-          "3.4.0",
-          "3.5.0.post1",
-          "3.5.1",
-          "3.5.2",
-          "3.5.2.post1",
-          "3.6.0",
-          "3.6.1",
-          "3.7.0",
-          "3.7.0rc2",
-          "3.7.0rc3",
-          "3.7.1",
-          "3.8.0",
-          "3.8.0rc1",
-          "3.9.0",
-          "3.9.0rc1",
-          "3.9.1",
-          "3.9.2",
-          "4.0.0rc1",
-          "4.0.0rc2",
-          "4.21.0",
-          "4.21.0rc1",
-          "4.21.0rc2",
-          "4.21.1",
-          "4.21.10",
-          "4.21.11",
-          "4.21.12",
-          "4.21.2",
-          "4.21.3",
-          "4.21.4",
-          "4.21.5",
-          "4.21.6",
-          "4.21.7",
-          "4.21.8",
-          "4.21.9",
-          "4.22.0",
-          "4.22.0rc1",
-          "4.22.0rc2",
-          "4.22.0rc3",
-          "4.22.1",
-          "4.22.3",
-          "4.22.4",
-          "4.22.5",
-          "4.23.0",
-          "4.23.0rc2",
-          "4.23.0rc3",
-          "4.23.1",
-          "4.23.2",
-          "4.23.3",
-          "4.23.4",
-          "4.24.0",
-          "4.24.0rc1",
-          "4.24.0rc2",
-          "4.24.0rc3",
-          "4.24.1",
-          "4.24.2",
-          "4.24.3",
-          "4.24.4",
-          "4.25.0",
-          "4.25.0rc1",
-          "4.25.0rc2",
-          "4.25.1",
-          "4.25.2",
-          "4.25.3",
-          "4.25.4",
-          "4.25.5",
-          "4.25.6",
-          "4.25.7",
-          "4.25.8",
-          "5.26.0",
-          "5.26.0rc1",
-          "5.26.0rc2",
-          "5.26.0rc3",
-          "5.26.1",
-          "5.27.0",
-          "5.27.0rc1",
-          "5.27.0rc2",
-          "5.27.0rc3",
-          "5.27.1",
-          "5.27.2",
-          "5.27.3",
-          "5.27.4",
-          "5.27.5",
-          "5.28.0",
-          "5.28.0rc1",
-          "5.28.0rc2",
-          "5.28.0rc3",
-          "5.28.1",
-          "5.28.2",
-          "5.28.3",
-          "5.29.0",
-          "5.29.0rc1",
-          "5.29.0rc2",
-          "5.29.0rc3",
-          "5.29.1",
-          "5.29.2",
-          "5.29.3",
-          "5.29.4",
-          "5.29.5"
-        ],
-        "ecosystem_specific": null,
-        "database_specific": {
-          "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-7gcm-g887-7qv7/GHSA-7gcm-g887-7qv7.json"
-        }
-      }
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0994"
-      },
-      {
-        "type": "WEB",
-        "url": "https://github.com/protocolbuffers/protobuf/issues/25070"
-      },
-      {
-        "type": "WEB",
-        "url": "https://github.com/protocolbuffers/protobuf/pull/25239"
-      },
-      {
-        "type": "WEB",
-        "url": "https://github.com/protocolbuffers/protobuf/commit/5ebddcb1bcbe51d1fe323baa145e85f4f23128cf"
-      },
-      {
-        "type": "WEB",
-        "url": "https://github.com/protocolbuffers/protobuf/commit/d2b001626d137c62dfee6c88c87324102531868b"
-      },
-      {
-        "type": "PACKAGE",
-        "url": "https://github.com/protocolbuffers/protobuf"
-      }
-    ],
-    "credits": null,
-    "database_specific": {
-      "cwe_ids": [
-        "CWE-674"
-      ],
-      "github_reviewed": true,
-      "github_reviewed_at": "2026-01-23T16:56:33Z",
-      "nvd_published_at": "2026-01-23T15:16:06Z",
-      "severity": "HIGH"
-    }
-  },
-  {
-    "schema_version": "1.7.3",
     "id": "GHSA-32g6-mg92-ghm2",
     "modified": "2025-10-16T08:05:42.002280Z",
     "published": "2025-03-20T12:32:52Z",
@@ -3474,6 +3030,450 @@
       "github_reviewed": true,
       "github_reviewed_at": "2026-02-02T23:33:32Z",
       "nvd_published_at": "2026-02-02T23:16:04Z",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "schema_version": "1.7.3",
+    "id": "PYSEC-2024-161",
+    "modified": "2025-01-14T05:57:19.017909Z",
+    "published": "2024-11-28T17:15:48Z",
+    "withdrawn": null,
+    "aliases": [
+      "CVE-2024-52338"
+    ],
+    "upstream": null,
+    "related": null,
+    "summary": null,
+    "details": "Deserialization of untrusted data in IPC and Parquet readers in the Apache Arrow R package versions 4.0.0 through 16.1.0 allows arbitrary code execution. An application is vulnerable if it \nreads Arrow IPC, Feather or Parquet data from untrusted sources (for \nexample, user-supplied input files). This vulnerability only affects the arrow R package, not other Apache Arrow \nimplementations or bindings unless those bindings are specifically used via the R package (for example, an R application that embeds a Python interpreter and uses PyArrow to read files from untrusted sources is still vulnerable if the arrow R package is an affected version). It is recommended that users of the arrow R package upgrade to 17.0.0 or later. Similarly, it\n is recommended that downstream libraries upgrade their dependency \nrequirements to arrow 17.0.0 or later. If using an affected\nversion of the package, untrusted data can read into a Table and its internal to_data_frame() method can be used as a workaround (e.g., read_parquet(..., as_data_frame = FALSE)$to_data_frame()).\n\n\nThis issue affects the Apache Arrow R package: from 4.0.0 through 16.1.0.\n\n\nUsers are recommended to upgrade to version 17.0.0, which fixes the issue.",
+    "severity": null,
+    "affected": [
+      {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "pyarrow",
+          "purl": "pkg:pypi/pyarrow"
+        },
+        "severity": null,
+        "ranges": [
+          {
+            "type": "GIT",
+            "repo": "https://github.com/apache/arrow",
+            "events": [
+              {
+                "introduced": "0",
+                "fixed": null,
+                "last_affected": null,
+                "limit": null
+              },
+              {
+                "introduced": null,
+                "fixed": "801de2fbcf5bcbce0c019ed4b35ff3fc863b141b",
+                "last_affected": null,
+                "limit": null
+              }
+            ],
+            "database_specific": null
+          },
+          {
+            "type": "ECOSYSTEM",
+            "repo": null,
+            "events": [
+              {
+                "introduced": "4.0.0",
+                "fixed": null,
+                "last_affected": null,
+                "limit": null
+              },
+              {
+                "introduced": null,
+                "fixed": "17.0.0",
+                "last_affected": null,
+                "limit": null
+              }
+            ],
+            "database_specific": null
+          }
+        ],
+        "versions": [
+          "10.0.0",
+          "10.0.1",
+          "11.0.0",
+          "12.0.0",
+          "12.0.1",
+          "13.0.0",
+          "14.0.0",
+          "14.0.1",
+          "14.0.2",
+          "15.0.0",
+          "15.0.1",
+          "15.0.2",
+          "16.0.0",
+          "16.1.0",
+          "4.0.0",
+          "4.0.1",
+          "5.0.0",
+          "6.0.0",
+          "6.0.1",
+          "7.0.0",
+          "8.0.0",
+          "9.0.0"
+        ],
+        "ecosystem_specific": null,
+        "database_specific": {
+          "source": "https://github.com/pypa/advisory-database/blob/main/vulns/pyarrow/PYSEC-2024-161.yaml"
+        }
+      }
+    ],
+    "references": [
+      {
+        "type": "FIX",
+        "url": "https://github.com/apache/arrow/commit/801de2fbcf5bcbce0c019ed4b35ff3fc863b141b"
+      },
+      {
+        "type": "WEB",
+        "url": "https://lists.apache.org/thread/0rcbvj1gdp15lvm23zm601tjpq0k25vt"
+      },
+      {
+        "type": "WEB",
+        "url": "http://www.openwall.com/lists/oss-security/2024/11/28/3"
+      }
+    ],
+    "credits": null,
+    "database_specific": null
+  },
+  {
+    "schema_version": "1.7.3",
+    "id": "GHSA-7gcm-g887-7qv7",
+    "modified": "2026-02-05T16:35:34.839005Z",
+    "published": "2026-01-23T15:31:35Z",
+    "withdrawn": null,
+    "aliases": [
+      "CVE-2026-0994"
+    ],
+    "upstream": null,
+    "related": [
+      "CGA-jgjc-r94m-fgp2"
+    ],
+    "summary": "protobuf affected by a JSON recursion depth bypass",
+    "details": "A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any messages.\n\nDue to missing recursion depth accounting inside the internal Any-handling logic, an attacker can supply deeply nested Any structures that bypass the intended recursion limit, eventually exhausting Python’s recursion stack and causing a RecursionError.",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "protobuf",
+          "purl": "pkg:pypi/protobuf"
+        },
+        "severity": null,
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "repo": null,
+            "events": [
+              {
+                "introduced": "6.30.0rc1",
+                "fixed": null,
+                "last_affected": null,
+                "limit": null
+              },
+              {
+                "introduced": null,
+                "fixed": "6.33.5",
+                "last_affected": null,
+                "limit": null
+              }
+            ],
+            "database_specific": null
+          }
+        ],
+        "versions": [
+          "6.30.0",
+          "6.30.0rc1",
+          "6.30.0rc2",
+          "6.30.1",
+          "6.30.2",
+          "6.31.0",
+          "6.31.0rc1",
+          "6.31.0rc2",
+          "6.31.1",
+          "6.32.0",
+          "6.32.0rc1",
+          "6.32.0rc2",
+          "6.32.1",
+          "6.33.0",
+          "6.33.0rc1",
+          "6.33.0rc2",
+          "6.33.1",
+          "6.33.2",
+          "6.33.3",
+          "6.33.4"
+        ],
+        "ecosystem_specific": null,
+        "database_specific": {
+          "last_known_affected_version_range": "<= 6.33.4",
+          "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-7gcm-g887-7qv7/GHSA-7gcm-g887-7qv7.json"
+        }
+      },
+      {
+        "package": {
+          "ecosystem": "PyPI",
+          "name": "protobuf",
+          "purl": "pkg:pypi/protobuf"
+        },
+        "severity": null,
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "repo": null,
+            "events": [
+              {
+                "introduced": "0",
+                "fixed": null,
+                "last_affected": null,
+                "limit": null
+              },
+              {
+                "introduced": null,
+                "fixed": "5.29.6",
+                "last_affected": null,
+                "limit": null
+              }
+            ],
+            "database_specific": null
+          }
+        ],
+        "versions": [
+          "2.0.0beta",
+          "2.0.3",
+          "2.3.0",
+          "2.4.1",
+          "2.5.0",
+          "2.6.0",
+          "2.6.1",
+          "3.0.0",
+          "3.0.0a2",
+          "3.0.0a3",
+          "3.0.0b1",
+          "3.0.0b1.post1",
+          "3.0.0b1.post2",
+          "3.0.0b2",
+          "3.0.0b2.post1",
+          "3.0.0b2.post2",
+          "3.0.0b3",
+          "3.0.0b4",
+          "3.1.0",
+          "3.1.0.post1",
+          "3.10.0",
+          "3.10.0rc1",
+          "3.11.0",
+          "3.11.0rc1",
+          "3.11.0rc2",
+          "3.11.1",
+          "3.11.2",
+          "3.11.3",
+          "3.12.0",
+          "3.12.0rc1",
+          "3.12.0rc2",
+          "3.12.1",
+          "3.12.2",
+          "3.12.4",
+          "3.13.0",
+          "3.13.0rc3",
+          "3.14.0",
+          "3.14.0rc1",
+          "3.14.0rc2",
+          "3.14.0rc3",
+          "3.15.0",
+          "3.15.0rc1",
+          "3.15.0rc2",
+          "3.15.1",
+          "3.15.2",
+          "3.15.3",
+          "3.15.4",
+          "3.15.5",
+          "3.15.6",
+          "3.15.7",
+          "3.15.8",
+          "3.16.0",
+          "3.16.0rc1",
+          "3.16.0rc2",
+          "3.17.0",
+          "3.17.0rc1",
+          "3.17.0rc2",
+          "3.17.1",
+          "3.17.2",
+          "3.17.3",
+          "3.18.0",
+          "3.18.0rc1",
+          "3.18.0rc2",
+          "3.18.1",
+          "3.18.3",
+          "3.19.0",
+          "3.19.0rc1",
+          "3.19.0rc2",
+          "3.19.1",
+          "3.19.2",
+          "3.19.3",
+          "3.19.4",
+          "3.19.5",
+          "3.19.6",
+          "3.2.0",
+          "3.2.0rc1",
+          "3.2.0rc1.post1",
+          "3.2.0rc2",
+          "3.20.0",
+          "3.20.0rc1",
+          "3.20.0rc2",
+          "3.20.1",
+          "3.20.1rc1",
+          "3.20.2",
+          "3.20.3",
+          "3.3.0",
+          "3.4.0",
+          "3.5.0.post1",
+          "3.5.1",
+          "3.5.2",
+          "3.5.2.post1",
+          "3.6.0",
+          "3.6.1",
+          "3.7.0",
+          "3.7.0rc2",
+          "3.7.0rc3",
+          "3.7.1",
+          "3.8.0",
+          "3.8.0rc1",
+          "3.9.0",
+          "3.9.0rc1",
+          "3.9.1",
+          "3.9.2",
+          "4.0.0rc1",
+          "4.0.0rc2",
+          "4.21.0",
+          "4.21.0rc1",
+          "4.21.0rc2",
+          "4.21.1",
+          "4.21.10",
+          "4.21.11",
+          "4.21.12",
+          "4.21.2",
+          "4.21.3",
+          "4.21.4",
+          "4.21.5",
+          "4.21.6",
+          "4.21.7",
+          "4.21.8",
+          "4.21.9",
+          "4.22.0",
+          "4.22.0rc1",
+          "4.22.0rc2",
+          "4.22.0rc3",
+          "4.22.1",
+          "4.22.3",
+          "4.22.4",
+          "4.22.5",
+          "4.23.0",
+          "4.23.0rc2",
+          "4.23.0rc3",
+          "4.23.1",
+          "4.23.2",
+          "4.23.3",
+          "4.23.4",
+          "4.24.0",
+          "4.24.0rc1",
+          "4.24.0rc2",
+          "4.24.0rc3",
+          "4.24.1",
+          "4.24.2",
+          "4.24.3",
+          "4.24.4",
+          "4.25.0",
+          "4.25.0rc1",
+          "4.25.0rc2",
+          "4.25.1",
+          "4.25.2",
+          "4.25.3",
+          "4.25.4",
+          "4.25.5",
+          "4.25.6",
+          "4.25.7",
+          "4.25.8",
+          "5.26.0",
+          "5.26.0rc1",
+          "5.26.0rc2",
+          "5.26.0rc3",
+          "5.26.1",
+          "5.27.0",
+          "5.27.0rc1",
+          "5.27.0rc2",
+          "5.27.0rc3",
+          "5.27.1",
+          "5.27.2",
+          "5.27.3",
+          "5.27.4",
+          "5.27.5",
+          "5.28.0",
+          "5.28.0rc1",
+          "5.28.0rc2",
+          "5.28.0rc3",
+          "5.28.1",
+          "5.28.2",
+          "5.28.3",
+          "5.29.0",
+          "5.29.0rc1",
+          "5.29.0rc2",
+          "5.29.0rc3",
+          "5.29.1",
+          "5.29.2",
+          "5.29.3",
+          "5.29.4",
+          "5.29.5"
+        ],
+        "ecosystem_specific": null,
+        "database_specific": {
+          "source": "https://github.com/github/advisory-database/blob/main/advisories/github-reviewed/2026/01/GHSA-7gcm-g887-7qv7/GHSA-7gcm-g887-7qv7.json"
+        }
+      }
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0994"
+      },
+      {
+        "type": "WEB",
+        "url": "https://github.com/protocolbuffers/protobuf/issues/25070"
+      },
+      {
+        "type": "WEB",
+        "url": "https://github.com/protocolbuffers/protobuf/pull/25239"
+      },
+      {
+        "type": "WEB",
+        "url": "https://github.com/protocolbuffers/protobuf/commit/5ebddcb1bcbe51d1fe323baa145e85f4f23128cf"
+      },
+      {
+        "type": "WEB",
+        "url": "https://github.com/protocolbuffers/protobuf/commit/d2b001626d137c62dfee6c88c87324102531868b"
+      },
+      {
+        "type": "PACKAGE",
+        "url": "https://github.com/protocolbuffers/protobuf"
+      }
+    ],
+    "credits": null,
+    "database_specific": {
+      "cwe_ids": [
+        "CWE-674"
+      ],
+      "github_reviewed": true,
+      "github_reviewed_at": "2026-01-23T16:56:33Z",
+      "nvd_published_at": "2026-01-23T15:16:06Z",
       "severity": "HIGH"
     }
   },
