@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
-/// Toppnivå-svaret från `GET /pypi/{package}/{version}/json`.
+/// Top-level response from `GET /pypi/{package}/{version}/json`.
 #[derive(Serialize, Deserialize, Debug)]
 pub struct PypiResponse {
     pub info: PypiRequirements,
 }
 
-/// Fälten vi bryr oss om under `info`-nyckeln.
+/// The fields we care about under the `info` key.
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct PypiRequirements {
     pub requires_dist: Vec<String>,

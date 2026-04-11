@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 // ---------------------------------------------------------------------------
-// Request-typer (vi skickar dessa till OSV)
+// Request types (sent to OSV)
 // ---------------------------------------------------------------------------
 
 #[derive(Serialize)]
@@ -17,7 +17,7 @@ pub struct OsvPackage {
 }
 
 // ---------------------------------------------------------------------------
-// Response-typer (vi tar emot dessa från OSV)
+// Response types (received from OSV)
 // ---------------------------------------------------------------------------
 
 #[derive(Deserialize, Serialize, Debug)]

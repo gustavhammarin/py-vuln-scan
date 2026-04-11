@@ -237,3 +237,169 @@ fn get_severity(entry: &OsvVuln) -> (&'static str, f64) {
 
     (label, val)
 }
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::osv::{
+        OsvAffected, OsvAffectedPackage, OsvEvent, OsvRange, OsvReference, OsvSeverity, OsvVuln,
+    };
+
+    // --- Helpers ------------------------------------------------------------
+
+    fn empty_vuln() -> OsvVuln {
+        OsvVuln {
+            id: "TEST-001".to_string(),
+            schema_version: None,
+            modified: None,
+            published: None,
+            withdrawn: None,
+            aliases: None,
+            upstream: None,
+            related: None,
+            summary: None,
+            details: None,
+            severity: None,
+            affected: None,
+            references: None,
+            credits: None,
+            database_specific: None,
+        }
+    }
+
+    // --- fmt_date -----------------------------------------------------------
+
+    #[test]
+    fn fmt_date_extracts_first_ten_chars() {
+        assert_eq!(fmt_date(Some("2024-03-15T12:00:00Z")), "2024-03-15");
+    }
+
+    #[test]
+    fn fmt_date_returns_fallback_for_none() {
+        assert_eq!(fmt_date(None), "—");
+    }
+
+    #[test]
+    fn fmt_date_returns_fallback_for_short_string() {
+        assert_eq!(fmt_date(Some("2024")), "—");
+    }
+
+    // --- get_severity -------------------------------------------------------
+
+    #[test]
+    fn no_severity_returns_dash_and_zero() {
+        let (label, score) = get_severity(&empty_vuln());
+        assert_eq!(label, "—");
+        assert_eq!(score, 0.0);
+    }
+
+    #[test]
+    fn critical_score_returns_critical_label() {
+        let mut vuln = empty_vuln();
+        // CVSS:3.1 score 9.8 — network, low complexity, no privileges, no user interaction
+        vuln.severity = Some(vec![OsvSeverity {
+            r#type: "CVSS_V3".to_string(),
+            score: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H".to_string(),
+        }]);
+        let (label, score) = get_severity(&vuln);
+        assert_eq!(label, "CRITICAL");
+        assert!(score >= 9.0);
+    }
+
+    #[test]
+    fn medium_score_returns_medium_label() {
+        let mut vuln = empty_vuln();
+        // CVSS:3.1 score ~5.3
+        vuln.severity = Some(vec![OsvSeverity {
+            r#type: "CVSS_V3".to_string(),
+            score: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N".to_string(),
+        }]);
+        let (label, score) = get_severity(&vuln);
+        assert_eq!(label, "MEDIUM");
+        assert!(score >= 4.0 && score < 7.0);
+    }
+
+    // --- get_package --------------------------------------------------------
+
+    #[test]
+    fn get_package_returns_name_from_affected() {
+        let mut vuln = empty_vuln();
+        vuln.affected = Some(vec![OsvAffected {
+            package: Some(OsvAffectedPackage {
+                ecosystem: "PyPI".to_string(),
+                name: "requests".to_string(),
+                purl: None,
+            }),
+            severity: None,
+            ranges: None,
+            versions: None,
+            ecosystem_specific: None,
+            database_specific: None,
+        }]);
+        assert_eq!(get_package(&vuln), "requests");
+    }
+
+    #[test]
+    fn get_package_returns_dash_when_no_affected() {
+        assert_eq!(get_package(&empty_vuln()), "—");
+    }
+
+    // --- get_fixed_version --------------------------------------------------
+
+    #[test]
+    fn get_fixed_version_extracts_fixed_event() {
+        let mut vuln = empty_vuln();
+        vuln.affected = Some(vec![OsvAffected {
+            package: None,
+            severity: None,
+            ranges: Some(vec![OsvRange {
+                r#type: "SEMVER".to_string(),
+                repo: None,
+                events: Some(vec![
+                    OsvEvent { introduced: Some("0".to_string()), fixed: None, last_affected: None, limit: None },
+                    OsvEvent { introduced: None, fixed: Some("2.32.0".to_string()), last_affected: None, limit: None },
+                ]),
+                database_specific: None,
+            }]),
+            versions: None,
+            ecosystem_specific: None,
+            database_specific: None,
+        }]);
+        assert_eq!(get_fixed_version(&vuln).unwrap(), "2.32.0");
+    }
+
+    #[test]
+    fn get_fixed_version_returns_none_when_no_fix() {
+        assert!(get_fixed_version(&empty_vuln()).is_none());
+    }
+
+    // --- get_advisory_url ---------------------------------------------------
+
+    #[test]
+    fn get_advisory_url_prefers_advisory_type() {
+        let mut vuln = empty_vuln();
+        vuln.references = Some(vec![
+            OsvReference { r#type: "WEB".to_string(), url: "https://example.com/web".to_string() },
+            OsvReference { r#type: "ADVISORY".to_string(), url: "https://example.com/advisory".to_string() },
+        ]);
+        assert_eq!(get_advisory_url(&vuln).unwrap(), "https://example.com/advisory");
+    }
+
+    #[test]
+    fn get_advisory_url_falls_back_to_first_reference() {
+        let mut vuln = empty_vuln();
+        vuln.references = Some(vec![
+            OsvReference { r#type: "WEB".to_string(), url: "https://example.com/first".to_string() },
+        ]);
+        assert_eq!(get_advisory_url(&vuln).unwrap(), "https://example.com/first");
+    }
+
+    #[test]
+    fn get_advisory_url_returns_none_when_no_references() {
+        assert!(get_advisory_url(&empty_vuln()).is_none());
+    }
+}

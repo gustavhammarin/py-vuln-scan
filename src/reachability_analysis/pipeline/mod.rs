@@ -1,10 +1,10 @@
 /* use crate::{
-    dep_graph::PackageRef,
+    dep_graph::DepNode,
     error::AppError,
     reachability_analysis::pypi_http::client::PypiSourceClient,
 };
 
-pub async fn run_pipeline(packages: Vec<&PackageRef>) -> Result<(), AppError> {
+pub async fn run_pipeline(packages: Vec<&DepNode>) -> Result<(), AppError> {
     let source_client = PypiSourceClient::new();
 
     for entry in packages {

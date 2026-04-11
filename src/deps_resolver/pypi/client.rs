@@ -2,7 +2,7 @@ use crate::error::AppError;
 
 use super::schemas::{PypiRequirements, PypiResponse};
 
-/// Hämta `requires_dist` och `requires_python` för ett specifikt paket+version från PyPI.
+/// Fetch `requires_dist` and `requires_python` for a specific package+version from PyPI.
 pub async fn get_requires_dist(
     client: &reqwest::Client,
     package_id: &str,

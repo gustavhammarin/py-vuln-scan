@@ -5,12 +5,10 @@ mod osv;
 mod reachability_analysis;
 mod tui;
 
-use std::collections::HashSet;
-
 use clap::Parser;
 
 use crate::{
-    dep_graph::{build_tree},
+    dep_graph::DepNode,
     deps_resolver::DepsResolver,
     error::AppError,
     osv::VulnFetcher,
@@ -36,15 +34,14 @@ async fn main() -> Result<(), AppError> {
         .fetch_vulnerabilities(deps.packages.clone())
         .await?;
 
-    let tree = build_tree(
+    let tree = DepNode::build(
         &cli.package,
         deps.packages.get(&cli.package).unwrap(),
         &deps.graph,
         &vulns,
-        &mut HashSet::new(),
     );
     
-    let chains = tree.build_vuln_chains();
+    let chains = tree.vuln_chains();
 
     tokio::fs::write("result.json", serde_json::to_string_pretty(&tree).unwrap())
         .await

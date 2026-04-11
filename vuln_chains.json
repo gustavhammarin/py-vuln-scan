@@ -3,11 +3,13 @@
     "chain": [
       {
         "name": "requests",
-        "version": "2.20.0"
+        "version": "2.20.0",
+        "is_vulnerable": true
       },
       {
         "name": "idna",
-        "version": "2.7"
+        "version": "2.7",
+        "is_vulnerable": true
       }
     ]
   },
@@ -15,11 +17,13 @@
     "chain": [
       {
         "name": "requests",
-        "version": "2.20.0"
+        "version": "2.20.0",
+        "is_vulnerable": true
       },
       {
         "name": "urllib3",
-        "version": "1.24.3"
+        "version": "1.24.3",
+        "is_vulnerable": true
       }
     ]
   }

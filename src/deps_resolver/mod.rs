@@ -11,29 +11,29 @@ use crate::error::AppError;
 use provider::PyPIProvider;
 
 // ---------------------------------------------------------------------------
-// Publika typer
+// Public types
 // ---------------------------------------------------------------------------
 
-/// En direkt beroendekant: ett paket med upplöst version.
+/// A direct dependency edge: a package with its resolved version.
 #[derive(serde::Serialize, Clone, PartialEq, Eq, Hash, Debug)]
 pub struct DepRef {
     pub name: String,
     pub version: String,
 }
 
-/// Resultatet av en full dependency-resolution.
+/// The result of a full dependency resolution.
 pub struct ResolvedDeps {
-    /// Flat map: paketnamn → upplöst version (används för OSV-lookups).
+    /// Flat map: package name → resolved version string (used for OSV lookups).
     pub packages: HashMap<String, String>,
-    /// Adjacency-lista: paketnamn → direkta beroenden med upplösta versioner.
+    /// Adjacency list: package name → direct dependencies with resolved versions.
     pub graph: HashMap<String, Vec<DepRef>>,
 }
 
 // ---------------------------------------------------------------------------
-// Publik ingångspunkt
+// Public entry point
 // ---------------------------------------------------------------------------
 
-/// Löser transitiva beroenden för ett PyPI-paket via pubgrub.
+/// Resolves transitive dependencies for a PyPI package via pubgrub.
 pub struct DepsResolver;
 
 impl DepsResolver {
@@ -41,60 +41,59 @@ impl DepsResolver {
         Self
     }
 
-    /// Lös alla transitiva beroenden och returnera ett platt paket-map
-    /// samt en adjacency-lista.
+    /// Resolve all transitive dependencies and return a flat package map
+    /// together with an adjacency list.
     pub async fn resolve(&self, package: &str, version: &str) -> Result<ResolvedDeps, AppError> {
         let pkg = package.to_string();
         let ver = version.to_string();
 
         tokio::task::spawn_blocking(move || {
-        let provider = PyPIProvider::new();
-        let root_version =
-            Version::from_str(&ver).map_err(|e| AppError::InvalidVersion(e.to_string()))?;
+            let provider = PyPIProvider::new();
+            let root_version =
+                Version::from_str(&ver).map_err(|e| AppError::InvalidVersion(e.to_string()))?;
 
-        match pubgrub::resolve(&provider, pkg.clone(), root_version) {
-            Ok(sol) => {
-                let mut graph: HashMap<String, Vec<DepRef>> = HashMap::new();
+            match pubgrub::resolve(&provider, pkg.clone(), root_version) {
+                Ok(sol) => {
+                    let mut graph: HashMap<String, Vec<DepRef>> = HashMap::new();
 
-                for (pkg, ver) in &sol {
-                    let key = (pkg.clone(), ver.to_string());
-                    let deps = provider
-                        .deps_cache
-                        .borrow()
-                        .get(&key)
-                        .map(|deps| {
-                            let mut seen = std::collections::HashSet::new();
-                            deps.iter()
-                                .filter_map(|req| {
-                                    let name = req.name.to_string();
-                                    let version = sol.get(&name)?.to_string();
-                                    let node = DepRef { name, version };
-                                    seen.insert(node.clone()).then_some(node)
-                                })
-                                .collect()
-                        })
-                        .unwrap_or_default();
-                    graph.insert(pkg.clone(), deps);
+                    for (pkg, ver) in &sol {
+                        let key = (pkg.clone(), ver.to_string());
+                        let deps = provider
+                            .deps_cache
+                            .borrow()
+                            .get(&key)
+                            .map(|deps| {
+                                let mut seen = std::collections::HashSet::new();
+                                deps.iter()
+                                    .filter_map(|req| {
+                                        let name = req.name.to_string();
+                                        let version = sol.get(&name)?.to_string();
+                                        let node = DepRef { name, version };
+                                        seen.insert(node.clone()).then_some(node)
+                                    })
+                                    .collect()
+                            })
+                            .unwrap_or_default();
+                        graph.insert(pkg.clone(), deps);
+                    }
+
+                    let packages: HashMap<String, String> =
+                        sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
+
+                    Ok(ResolvedDeps { packages, graph })
                 }
-
-                let packages: HashMap<String, String> =
-                    sol.into_iter().map(|(p, v)| (p, v.to_string())).collect();
-
-                Ok(ResolvedDeps { packages, graph })
+                Err(pubgrub::PubGrubError::NoSolution(mut tree)) => {
+                    tree.collapse_no_versions();
+                    Err(AppError::Resolution(
+                        pubgrub::DefaultStringReporter::report(&tree),
+                    ))
+                }
+                Err(e) => Err(AppError::Resolution(e.to_string())),
             }
-            Err(pubgrub::PubGrubError::NoSolution(mut tree)) => {
-                tree.collapse_no_versions();
-                Err(AppError::Resolution(
-                    pubgrub::DefaultStringReporter::report(&tree),
-                ))
-            }
-            Err(e) => Err(AppError::Resolution(e.to_string())),
-        }
         })
         .await?
     }
 }
-
 
 #[test]
 fn test_resolve() {

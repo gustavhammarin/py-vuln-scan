@@ -1,8 +1,8 @@
-//! Implementerar pubgrubs `DependencyProvider`-trait mot PyPI.
+//! Implements pubgrub's `DependencyProvider` trait against PyPI.
 //!
-//! pubgrub är ett synkront bibliotek men vi lever i en async-värld.
-//! Lösningen: `PyPIProvider` håller en dedikerad Tokio-runtime och
-//! anropar `block_on` inifrån de synkrona provider-callbacks.
+//! pubgrub is a synchronous library but we live in an async context.
+//! Solution: `PyPIProvider` holds a dedicated Tokio runtime and calls
+//! `block_on` inside the synchronous provider callbacks.
 
 use std::{cell::RefCell, collections::HashMap, str::FromStr};
 
@@ -22,8 +22,8 @@ use super::pypi::client::get_requires_dist;
 
 pub struct PyPIProvider {
     pub client: reqwest::Client,
-    /// Dedikerad runtime för att kunna köra async HTTP-anrop inifrån
-    /// pubgrubs synkrona callbacks.
+    /// Dedicated runtime for making async HTTP calls from inside
+    /// pubgrub's synchronous callbacks.
     pub runtime: tokio::runtime::Runtime,
     pub versions_cache: RefCell<HashMap<String, Vec<Version>>>,
     pub deps_cache: RefCell<HashMap<(String, String), Vec<pep508_rs::Requirement<VerbatimUrl>>>>,
@@ -44,7 +44,7 @@ impl PyPIProvider {
             return cached.clone();
         }
 
-        // Lokal typ — bara relevant för denna HTTP-respons.
+        // Local type — only relevant for this HTTP response.
         #[derive(serde::Deserialize)]
         struct AllVersions {
             releases: HashMap<String, serde_json::Value>,
@@ -112,7 +112,7 @@ impl PyPIProvider {
 }
 
 // ---------------------------------------------------------------------------
-// DependencyProvider-implementationen
+// DependencyProvider implementation
 // ---------------------------------------------------------------------------
 
 impl DependencyProvider for PyPIProvider {
@@ -123,7 +123,7 @@ impl DependencyProvider for PyPIProvider {
     type Err = std::convert::Infallible;
     type Priority = usize;
 
-    /// Prioritera paket med färre möjliga versioner — löser konflikter snabbare.
+    /// Prioritize packages with fewer possible versions — resolves conflicts faster.
     fn prioritize(
         &self,
         package: &String,
@@ -138,7 +138,7 @@ impl DependencyProvider for PyPIProvider {
         usize::MAX - count
     }
 
-    /// Välj den senaste tillgängliga versionen inom det tillåtna spannet.
+    /// Choose the newest available version within the allowed range.
     fn choose_version(
         &self,
         package: &String,
@@ -148,7 +148,7 @@ impl DependencyProvider for PyPIProvider {
         Ok(versions.into_iter().rev().find(|v| range.contains(v)))
     }
 
-    /// Hämta alla krav för en specifik paket+version och konvertera till pubgrub-ranges.
+    /// Fetch all requirements for a specific package+version and convert to pubgrub ranges.
     fn get_dependencies(
         &self,
         package: &String,
@@ -164,14 +164,14 @@ impl DependencyProvider for PyPIProvider {
 }
 
 // ---------------------------------------------------------------------------
-// Versionsspann-konvertering (PEP 440 → pubgrub Ranges)
+// Version range conversion (PEP 440 → pubgrub Ranges)
 // ---------------------------------------------------------------------------
 
-/// Översätt ett PEP 508-krav till ett pubgrub `Ranges<Version>`.
-/// Varje operator (>=, ~=, != ...) mappas till en Ranges-operation.
+/// Translate a PEP 508 requirement into a pubgrub `Ranges<Version>`.
+/// Each operator (>=, ~=, != ...) maps to a Ranges operation.
 pub fn req_to_range(req: &pep508_rs::Requirement<VerbatimUrl>) -> Ranges<Version> {
     let Some(VersionOrUrl::VersionSpecifier(specs)) = &req.version_or_url else {
-        return Ranges::full(); // inget versionskrav = alla versioner tillåtna
+        return Ranges::full(); // no version constraint = all versions allowed
     };
 
     specs.iter().fold(Ranges::full(), |acc, spec| {
@@ -184,7 +184,7 @@ pub fn req_to_range(req: &pep508_rs::Requirement<VerbatimUrl>) -> Ranges<Version
             Operator::Equal => Ranges::singleton(v),
             Operator::NotEqual => Ranges::singleton(v).complement(),
             Operator::TildeEqual => {
-                // ~=X.Y betyder >=X.Y, <X+1 — dvs bump den näst sista komponenten
+                // ~=X.Y means >=X.Y, <X+1 — bump the second-to-last component
                 let upper = bump_compatible(&v);
                 Ranges::between(v, upper)
             }
@@ -194,8 +194,8 @@ pub fn req_to_range(req: &pep508_rs::Requirement<VerbatimUrl>) -> Ranges<Version
     })
 }
 
-/// Beräkna övre gränsen för `~=`-operatorn.
-/// Exempel: ~=2.3.1 → upper = 2.4.0
+/// Compute the upper bound for the `~=` operator.
+/// Example: ~=2.3.1 → upper = 2.4.0
 fn bump_compatible(v: &Version) -> Version {
     let mut parts = v.release().to_vec();
     if parts.len() >= 2 {
@@ -203,4 +203,115 @@ fn bump_compatible(v: &Version) -> Version {
         *parts.last_mut().unwrap() += 1;
     }
     Version::new(parts)
+}
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use std::str::FromStr;
+
+    use pep508_rs::{Requirement, VerbatimUrl};
+    use pep508_rs::pep440_rs::Version;
+
+    use super::req_to_range;
+
+    fn req(s: &str) -> Requirement<VerbatimUrl> {
+        Requirement::from_str(s).unwrap()
+    }
+
+    fn ver(s: &str) -> Version {
+        Version::from_str(s).unwrap()
+    }
+
+    #[test]
+    fn no_version_constraint_allows_all() {
+        let range = req_to_range(&req("requests"));
+        assert!(range.contains(&ver("1.0")));
+        assert!(range.contains(&ver("99.0")));
+    }
+
+    #[test]
+    fn gte_includes_exact_and_higher() {
+        let range = req_to_range(&req("requests>=2.0"));
+        assert!(range.contains(&ver("2.0")));
+        assert!(range.contains(&ver("3.0")));
+        assert!(!range.contains(&ver("1.9")));
+    }
+
+    #[test]
+    fn gt_excludes_exact_version() {
+        let range = req_to_range(&req("requests>2.0"));
+        assert!(!range.contains(&ver("2.0")));
+        assert!(range.contains(&ver("2.1")));
+    }
+
+    #[test]
+    fn lte_includes_exact_and_lower() {
+        let range = req_to_range(&req("requests<=2.0"));
+        assert!(range.contains(&ver("2.0")));
+        assert!(range.contains(&ver("1.0")));
+        assert!(!range.contains(&ver("2.1")));
+    }
+
+    #[test]
+    fn lt_excludes_exact_version() {
+        let range = req_to_range(&req("requests<2.0"));
+        assert!(!range.contains(&ver("2.0")));
+        assert!(range.contains(&ver("1.9")));
+    }
+
+    #[test]
+    fn eq_is_singleton() {
+        let range = req_to_range(&req("requests==2.0"));
+        assert!(range.contains(&ver("2.0")));
+        assert!(!range.contains(&ver("2.1")));
+        assert!(!range.contains(&ver("1.9")));
+    }
+
+    #[test]
+    fn neq_excludes_exact_allows_others() {
+        let range = req_to_range(&req("requests!=2.0"));
+        assert!(!range.contains(&ver("2.0")));
+        assert!(range.contains(&ver("1.9")));
+        assert!(range.contains(&ver("2.1")));
+    }
+
+    #[test]
+    fn compatible_release_two_parts() {
+        // ~=2.3 means >=2.3, <3.0  (bump_compatible([2,3]) = [3])
+        let range = req_to_range(&req("requests~=2.3"));
+        assert!(range.contains(&ver("2.3")));
+        assert!(range.contains(&ver("2.9")));
+        assert!(!range.contains(&ver("3.0")));
+        assert!(!range.contains(&ver("2.2")));
+    }
+
+    #[test]
+    fn compatible_release_three_parts() {
+        // ~=2.3.1 means >=2.3.1, <2.4.0  (bump_compatible([2,3,1]) = [2,4])
+        let range = req_to_range(&req("requests~=2.3.1"));
+        assert!(range.contains(&ver("2.3.1")));
+        assert!(range.contains(&ver("2.3.9")));
+        assert!(!range.contains(&ver("2.4.0")));
+        assert!(!range.contains(&ver("2.3.0")));
+    }
+
+    #[test]
+    fn multiple_constraints_are_intersected() {
+        let range = req_to_range(&req("requests>=1.0,<3.0"));
+        assert!(range.contains(&ver("1.0")));
+        assert!(range.contains(&ver("2.9")));
+        assert!(!range.contains(&ver("0.9")));
+        assert!(!range.contains(&ver("3.0")));
+    }
+
+    #[test]
+    fn conflicting_constraints_produce_empty_range() {
+        // >=3.0 AND <2.0 — no version satisfies both
+        let range = req_to_range(&req("requests>=3.0,<2.0"));
+        assert!(range.is_empty());
+    }
 }

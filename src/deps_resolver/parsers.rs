@@ -7,8 +7,8 @@ use pep508_rs::{
 
 use super::pypi::schemas::PypiRequirements;
 
-/// Konstruera en hårdkodad Linux/CPython 3.11-miljö för marker-evaluering.
-/// Vi behöver detta för att filtrera bort plattforms- och version-specifika deps.
+/// Build a hardcoded Linux/CPython 3.11 environment for marker evaluation.
+/// This is used to filter out platform- and version-specific dependencies.
 fn linux_marker_env() -> MarkerEnvironment {
     MarkerEnvironmentBuilder {
         implementation_name: "cpython",
@@ -27,10 +27,10 @@ fn linux_marker_env() -> MarkerEnvironment {
     .expect("static marker env is valid")
 }
 
-/// Parsa `requires_dist`-strängar till strukturerade `Requirement`-objekt.
-/// Filtrerar bort paket som inte är kompatibla med Python 3.11 / Linux.
+/// Parse `requires_dist` strings into structured `Requirement` objects.
+/// Filters out packages that are incompatible with Python 3.11 / Linux.
 pub fn parse_deps(reqs: PypiRequirements) -> Vec<Requirement<VerbatimUrl>> {
-    // Hoppa över paketet helt om det kräver en annan Python-version än 3.11.
+    // Skip the package entirely if it requires a Python version other than 3.11.
     if let Some(spec_str) = reqs.requires_python.filter(|s| !s.is_empty()) {
         if let Ok(specifiers) = VersionSpecifiers::from_str(&spec_str) {
             let py311 = pep508_rs::pep440_rs::Version::from_str("3.11.0").unwrap();
