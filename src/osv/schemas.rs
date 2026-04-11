@@ -1,22 +1,31 @@
-use serde::{Deserialize,Serialize};
+use serde::{Deserialize, Serialize};
+
+// ---------------------------------------------------------------------------
+// Request-typer (vi skickar dessa till OSV)
+// ---------------------------------------------------------------------------
 
 #[derive(Serialize)]
-pub struct OsvQuery{
+pub struct OsvQuery {
     pub package: OsvPackage,
-    pub version: String
-}
-#[derive(Serialize)]
-pub struct OsvPackage{
-    pub name: String,
-    pub ecosystem: String
+    pub version: String,
 }
 
-#[derive(Deserialize,Serialize, Debug)]
+#[derive(Serialize)]
+pub struct OsvPackage {
+    pub name: String,
+    pub ecosystem: String,
+}
+
+// ---------------------------------------------------------------------------
+// Response-typer (vi tar emot dessa från OSV)
+// ---------------------------------------------------------------------------
+
+#[derive(Deserialize, Serialize, Debug)]
 pub struct OsvResponse {
     pub vulns: Option<Vec<OsvVuln>>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvVuln {
     pub schema_version: Option<String>,
     pub id: String,
@@ -35,13 +44,13 @@ pub struct OsvVuln {
     pub database_specific: Option<serde_json::Value>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvSeverity {
     pub r#type: String,
     pub score: String,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvAffected {
     pub package: Option<OsvAffectedPackage>,
     pub severity: Option<Vec<OsvSeverity>>,
@@ -51,14 +60,14 @@ pub struct OsvAffected {
     pub database_specific: Option<serde_json::Value>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvAffectedPackage {
     pub ecosystem: String,
     pub name: String,
     pub purl: Option<String>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvRange {
     pub r#type: String,
     pub repo: Option<String>,
@@ -66,7 +75,7 @@ pub struct OsvRange {
     pub database_specific: Option<serde_json::Value>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvEvent {
     pub introduced: Option<String>,
     pub fixed: Option<String>,
@@ -74,13 +83,13 @@ pub struct OsvEvent {
     pub limit: Option<String>,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvReference {
     pub r#type: String,
     pub url: String,
 }
 
-#[derive(Deserialize,Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct OsvCredit {
     pub name: String,
     pub contact: Option<Vec<String>>,

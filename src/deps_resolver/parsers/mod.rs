@@ -5,8 +5,10 @@ use pep508_rs::{
     pep440_rs::VersionSpecifiers,
 };
 
-use crate::http::{PypiRequirements, get_requires_dist};
+use super::pypi::schemas::PypiRequirements;
 
+/// Konstruera en hårdkodad Linux/CPython 3.11-miljö för marker-evaluering.
+/// Vi behöver detta för att filtrera bort plattforms- och version-specifika deps.
 fn linux_marker_env() -> MarkerEnvironment {
     MarkerEnvironmentBuilder {
         implementation_name: "cpython",
@@ -25,8 +27,10 @@ fn linux_marker_env() -> MarkerEnvironment {
     .expect("static marker env is valid")
 }
 
+/// Parsa `requires_dist`-strängar till strukturerade `Requirement`-objekt.
+/// Filtrerar bort paket som inte är kompatibla med Python 3.11 / Linux.
 pub fn parse_deps(reqs: PypiRequirements) -> Vec<Requirement<VerbatimUrl>> {
-    // Bail out early if Python version constraint excludes 3.11.
+    // Hoppa över paketet helt om det kräver en annan Python-version än 3.11.
     if let Some(spec_str) = reqs.requires_python.filter(|s| !s.is_empty()) {
         if let Ok(specifiers) = VersionSpecifiers::from_str(&spec_str) {
             let py311 = pep508_rs::pep440_rs::Version::from_str("3.11.0").unwrap();
@@ -48,10 +52,9 @@ pub fn parse_deps(reqs: PypiRequirements) -> Vec<Requirement<VerbatimUrl>> {
 #[tokio::test]
 async fn test_parse_deps() {
     let client = reqwest::Client::new();
-
-    let requirements = get_requires_dist(&client, "twine", "4.0.2").await.unwrap();
-
-    let parsed_result = parse_deps(requirements);
-
-    println!("{:?}", parsed_result)
+    let requirements = super::pypi::client::get_requires_dist(&client, "twine", "4.0.2")
+        .await
+        .unwrap();
+    let parsed = parse_deps(requirements);
+    println!("{:?}", parsed);
 }

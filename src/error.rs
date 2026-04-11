@@ -14,4 +14,6 @@ pub enum AppError {
 
     #[error("task join failed: {0}")]
     Join(#[from] tokio::task::JoinError),
+    #[error("not found: {0}")]
+    NotFound(String)
 }

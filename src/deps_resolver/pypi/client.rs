@@ -1,18 +1,8 @@
-use serde::{Deserialize, Serialize};
-
 use crate::error::AppError;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PypiResponse {
-    pub info: PypiRequirements,
-}
+use super::schemas::{PypiRequirements, PypiResponse};
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct PypiRequirements {
-    pub requires_dist: Vec<String>,
-    pub requires_python: Option<String>,
-}
-
+/// Hämta `requires_dist` och `requires_python` för ett specifikt paket+version från PyPI.
 pub async fn get_requires_dist(
     client: &reqwest::Client,
     package_id: &str,
@@ -23,10 +13,9 @@ pub async fn get_requires_dist(
     Ok(json.info)
 }
 
-
 #[tokio::test]
 async fn test_get_requires_dist() {
     let client = reqwest::Client::new();
     let requires_dist = get_requires_dist(&client, "twine", "4.0.2").await.unwrap();
-    println!("{:?}", requires_dist)
+    println!("{:?}", requires_dist);
 }

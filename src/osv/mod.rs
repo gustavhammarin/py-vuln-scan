@@ -1,10 +1,16 @@
+mod schemas;
+
+// Re-exportera de typer som resten av appen behöver känna till.
+pub use schemas::OsvVuln;
+
 use std::collections::HashMap;
 
 use futures::{StreamExt, stream};
 
 use crate::error::AppError;
-use crate::schemas::{OsvPackage, OsvQuery, OsvResponse, OsvVuln};
+use schemas::{OsvPackage, OsvQuery, OsvResponse};
 
+/// Hämtar sårbarheter från OSV-databasen för en mängd paket parallellt.
 pub struct VulnFetcher {
     client: reqwest::Client,
 }
@@ -16,7 +22,12 @@ impl VulnFetcher {
         }
     }
 
-    pub async fn fetch_vulnerabilities(&self, packages: HashMap<String, String>) -> Result<Vec<OsvVuln>, AppError> {
+    /// Slå upp alla sårbarheter för en hel dependency-lista.
+    /// Kör upp till 10 HTTP-anrop parallellt.
+    pub async fn fetch_vulnerabilities(
+        &self,
+        packages: HashMap<String, String>,
+    ) -> Result<Vec<OsvVuln>, AppError> {
         let results = stream::iter(packages)
             .map(|(p, v)| self.fetch_vulns_for_package(p, v))
             .buffer_unordered(10)
@@ -30,7 +41,11 @@ impl VulnFetcher {
         Ok(results)
     }
 
-    async fn fetch_vulns_for_package(&self, name: String, version: String) -> Result<Vec<OsvVuln>, AppError> {
+    async fn fetch_vulns_for_package(
+        &self,
+        name: String,
+        version: String,
+    ) -> Result<Vec<OsvVuln>, AppError> {
         let query = OsvQuery {
             package: OsvPackage {
                 name,
@@ -39,7 +54,8 @@ impl VulnFetcher {
             version,
         };
 
-        let response: OsvResponse = self.client
+        let response: OsvResponse = self
+            .client
             .post("https://api.osv.dev/v1/query")
             .json(&query)
             .send()
