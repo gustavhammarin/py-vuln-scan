@@ -1,26 +1,226 @@
 [
   [
-    "sagemaker"
+    {
+      "package_id": "mlflow",
+      "version": "2.13.2",
+      "vulnerabilities": [
+        "GHSA-gq3w-7jj3-x7gr",
+        "GHSA-r23q-823p-vmf7",
+        "GHSA-wxj7-3fx5-pp9m",
+        "GHSA-fh64-r2vc-xvhr",
+        "GHSA-q2r8-vmq7-fpx2",
+        "GHSA-q3gw-8236-5jw4",
+        "GHSA-wf7f-8fxf-xfxc",
+        "PYSEC-2025-17",
+        "GHSA-cv6c-7963-wxcg",
+        "GHSA-j8mg-pqc5-x9gj",
+        "GHSA-xch3-2f9x-wh9f",
+        "GHSA-4rqf-8pfm-p36r",
+        "GHSA-43c4-9qgj-x742",
+        "GHSA-x38x-g6gr-jqff",
+        "GHSA-qpgc-w4mg-6v92",
+        "GHSA-46r5-x6jq-v8g6",
+        "GHSA-pgqp-8h46-6x4j",
+        "GHSA-6xj8-rrqx-r4cv",
+        "PYSEC-2024-224",
+        "GHSA-vhcx-3pq2-4fvc",
+        "GHSA-ghv6-9r9j-wh4j",
+        "PYSEC-2025-52",
+        "GHSA-4x5p-f36r-mxxr",
+        "GHSA-fhff-qmm8-h2fp",
+        "GHSA-4rj2-9gcx-5qhx",
+        "GHSA-5cvj-7rg6-jggj",
+        "GHSA-cwgg-w6mp-w9hg",
+        "GHSA-49m6-vrr9-2cqm",
+        "GHSA-g6pg-52vf-843h",
+        "GHSA-76cg-cfhx-373f",
+        "GHSA-7p8j-qv6x-f4g4",
+        "GHSA-7qhf-v65m-g5f3"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "sagemaker-mlflow",
+      "version": "0.2.0",
+      "vulnerabilities": [],
+      "is_vulnerable": false
+    },
+    {
+      "package_id": "sagemaker",
+      "version": "2.232.2",
+      "vulnerabilities": [
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-62rc-f4v9-h543",
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-5r2p-pjr8-7fh7"
+      ],
+      "is_vulnerable": true
+    }
   ],
   [
-    "protobuf",
-    "mlflow",
-    "sagemaker-mlflow",
-    "sagemaker"
+    {
+      "package_id": "pyarrow",
+      "version": "15.0.2",
+      "vulnerabilities": [
+        "PYSEC-2024-161"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "mlflow",
+      "version": "2.13.2",
+      "vulnerabilities": [
+        "GHSA-gq3w-7jj3-x7gr",
+        "GHSA-r23q-823p-vmf7",
+        "GHSA-wxj7-3fx5-pp9m",
+        "GHSA-fh64-r2vc-xvhr",
+        "GHSA-q2r8-vmq7-fpx2",
+        "GHSA-q3gw-8236-5jw4",
+        "GHSA-wf7f-8fxf-xfxc",
+        "PYSEC-2025-17",
+        "GHSA-cv6c-7963-wxcg",
+        "GHSA-j8mg-pqc5-x9gj",
+        "GHSA-xch3-2f9x-wh9f",
+        "GHSA-4rqf-8pfm-p36r",
+        "GHSA-43c4-9qgj-x742",
+        "GHSA-x38x-g6gr-jqff",
+        "GHSA-qpgc-w4mg-6v92",
+        "GHSA-46r5-x6jq-v8g6",
+        "GHSA-pgqp-8h46-6x4j",
+        "GHSA-6xj8-rrqx-r4cv",
+        "PYSEC-2024-224",
+        "GHSA-vhcx-3pq2-4fvc",
+        "GHSA-ghv6-9r9j-wh4j",
+        "PYSEC-2025-52",
+        "GHSA-4x5p-f36r-mxxr",
+        "GHSA-fhff-qmm8-h2fp",
+        "GHSA-4rj2-9gcx-5qhx",
+        "GHSA-5cvj-7rg6-jggj",
+        "GHSA-cwgg-w6mp-w9hg",
+        "GHSA-49m6-vrr9-2cqm",
+        "GHSA-g6pg-52vf-843h",
+        "GHSA-76cg-cfhx-373f",
+        "GHSA-7p8j-qv6x-f4g4",
+        "GHSA-7qhf-v65m-g5f3"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "sagemaker-mlflow",
+      "version": "0.2.0",
+      "vulnerabilities": [],
+      "is_vulnerable": false
+    },
+    {
+      "package_id": "sagemaker",
+      "version": "2.232.2",
+      "vulnerabilities": [
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-62rc-f4v9-h543",
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-5r2p-pjr8-7fh7"
+      ],
+      "is_vulnerable": true
+    }
   ],
   [
-    "protobuf",
-    "sagemaker"
+    {
+      "package_id": "protobuf",
+      "version": "4.25.9",
+      "vulnerabilities": [
+        "GHSA-7gcm-g887-7qv7"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "mlflow",
+      "version": "2.13.2",
+      "vulnerabilities": [
+        "GHSA-gq3w-7jj3-x7gr",
+        "GHSA-r23q-823p-vmf7",
+        "GHSA-wxj7-3fx5-pp9m",
+        "GHSA-fh64-r2vc-xvhr",
+        "GHSA-q2r8-vmq7-fpx2",
+        "GHSA-q3gw-8236-5jw4",
+        "GHSA-wf7f-8fxf-xfxc",
+        "PYSEC-2025-17",
+        "GHSA-cv6c-7963-wxcg",
+        "GHSA-j8mg-pqc5-x9gj",
+        "GHSA-xch3-2f9x-wh9f",
+        "GHSA-4rqf-8pfm-p36r",
+        "GHSA-43c4-9qgj-x742",
+        "GHSA-x38x-g6gr-jqff",
+        "GHSA-qpgc-w4mg-6v92",
+        "GHSA-46r5-x6jq-v8g6",
+        "GHSA-pgqp-8h46-6x4j",
+        "GHSA-6xj8-rrqx-r4cv",
+        "PYSEC-2024-224",
+        "GHSA-vhcx-3pq2-4fvc",
+        "GHSA-ghv6-9r9j-wh4j",
+        "PYSEC-2025-52",
+        "GHSA-4x5p-f36r-mxxr",
+        "GHSA-fhff-qmm8-h2fp",
+        "GHSA-4rj2-9gcx-5qhx",
+        "GHSA-5cvj-7rg6-jggj",
+        "GHSA-cwgg-w6mp-w9hg",
+        "GHSA-49m6-vrr9-2cqm",
+        "GHSA-g6pg-52vf-843h",
+        "GHSA-76cg-cfhx-373f",
+        "GHSA-7p8j-qv6x-f4g4",
+        "GHSA-7qhf-v65m-g5f3"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "sagemaker-mlflow",
+      "version": "0.2.0",
+      "vulnerabilities": [],
+      "is_vulnerable": false
+    },
+    {
+      "package_id": "sagemaker",
+      "version": "2.232.2",
+      "vulnerabilities": [
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-62rc-f4v9-h543",
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-5r2p-pjr8-7fh7"
+      ],
+      "is_vulnerable": true
+    }
   ],
   [
-    "pyarrow",
-    "mlflow",
-    "sagemaker-mlflow",
-    "sagemaker"
+    {
+      "package_id": "protobuf",
+      "version": "4.25.9",
+      "vulnerabilities": [
+        "GHSA-7gcm-g887-7qv7"
+      ],
+      "is_vulnerable": true
+    },
+    {
+      "package_id": "sagemaker",
+      "version": "2.232.2",
+      "vulnerabilities": [
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-62rc-f4v9-h543",
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-5r2p-pjr8-7fh7"
+      ],
+      "is_vulnerable": true
+    }
   ],
   [
-    "mlflow",
-    "sagemaker-mlflow",
-    "sagemaker"
+    {
+      "package_id": "sagemaker",
+      "version": "2.232.2",
+      "vulnerabilities": [
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-62rc-f4v9-h543",
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-5r2p-pjr8-7fh7"
+      ],
+      "is_vulnerable": true
+    }
   ]
 ]

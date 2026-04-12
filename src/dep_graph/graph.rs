@@ -1,14 +1,12 @@
-use std::{
-    collections::{HashMap, HashSet},
-    thread::current,
-};
+use std::collections::{HashMap, HashSet};
 
 use serde::Serialize;
 use serde_json::{Value, json};
 
-#[derive(Serialize, Debug, Clone)]
+#[derive(Serialize, Debug, Clone, Default)]
 pub struct DepNode {
     pub package_id: String,
+    pub version: String,
     pub vulnerabilities: HashSet<String>,
     pub is_vulnerable: bool,
 }
@@ -28,11 +26,12 @@ impl DepGraph {
         }
     }
 
-    pub fn add_node(&mut self, package_id: &str) {
+    pub fn add_node(&mut self, package_id: &str, version: &str) {
         self.nodes.insert(
             package_id.to_string(),
             DepNode {
                 package_id: package_id.to_string(),
+                version: version.to_string(),
                 vulnerabilities: HashSet::new(),
                 is_vulnerable: false,
             },
@@ -50,6 +49,7 @@ impl DepGraph {
             .entry(from.to_string())
             .or_insert_with(Vec::new)
             .push(to.to_string());
+
         self.reverse_edges
             .entry(to.to_string())
             .or_insert_with(Vec::new)
@@ -63,8 +63,8 @@ impl DepGraph {
         }
     }
 
-    pub fn find_all_vulnerable_chains(&self, root: &str) -> Vec<Vec<String>> {
-        let mut all_chains: Vec<Vec<String>> = Vec::new();
+    pub fn find_all_vulnerable_chains(&self, root: &str) -> Vec<Vec<DepNode>> {
+        let mut all_chains: Vec<Vec<DepNode>> = Vec::new();
 
         for (_, node) in &self.nodes {
             if node.is_vulnerable {
@@ -75,9 +75,11 @@ impl DepGraph {
         all_chains
     }
 
-    fn find_all_paths_to_root(&self, from: &str, root: &str) -> Vec<Vec<String>> {
+    fn find_all_paths_to_root(&self, from: &str, root: &str) -> Vec<Vec<DepNode>> {
+        let from_node = self.nodes.get(from).cloned().unwrap_or_default();
+
         let mut paths = Vec::new();
-        let mut current_path = vec![from.to_string()];
+        let mut current_path = vec![from_node];
         self.find_paths_up(from, root, &mut current_path, &mut paths);
         paths
     }
@@ -86,8 +88,8 @@ impl DepGraph {
         &self,
         current: &str,
         target: &str,
-        path: &mut Vec<String>,
-        all_paths: &mut Vec<Vec<String>>,
+        path: &mut Vec<DepNode>,
+        all_paths: &mut Vec<Vec<DepNode>>,
     ) {
         if current == target {
             all_paths.push(path.clone());
@@ -96,10 +98,12 @@ impl DepGraph {
 
         if let Some(parents) = self.reverse_edges.get(current) {
             for parent in parents {
-                if !path.contains(parent) {
-                    path.push(parent.clone());
-                    self.find_paths_up(parent, target, path, all_paths);
-                    path.pop();
+                if !path.iter().any(|p| p.package_id == *parent) {
+                    if let Some(parent_node) = self.nodes.get(parent.as_str()) {
+                        path.push(parent_node.clone());
+                        self.find_paths_up(parent, target, path, all_paths);
+                        path.pop();
+                    }
                 }
             }
         }

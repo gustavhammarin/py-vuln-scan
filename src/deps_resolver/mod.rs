@@ -16,7 +16,7 @@ use provider::PyPIProvider;
 
 /// A direct dependency edge: a package with its resolved version.
 #[derive(serde::Serialize, Clone, PartialEq, Eq, Hash, Debug)]
-pub struct DepRef {
+pub struct PkgRef {
     pub name: String,
     pub version: String,
 }
@@ -26,7 +26,7 @@ pub struct ResolvedDeps {
     /// Flat map: package name → resolved version string (used for OSV lookups).
     pub packages: HashMap<String, String>,
     /// Adjacency list: package name → direct dependencies with resolved versions.
-    pub graph: HashMap<String, Vec<DepRef>>,
+    pub graph: HashMap<PkgRef, Vec<PkgRef>>,
 }
 
 // ---------------------------------------------------------------------------
@@ -54,7 +54,7 @@ impl DepsResolver {
 
             match pubgrub::resolve(&provider, pkg.clone(), root_version) {
                 Ok(sol) => {
-                    let mut graph: HashMap<String, Vec<DepRef>> = HashMap::new();
+                    let mut graph: HashMap<PkgRef, Vec<PkgRef>> = HashMap::new();
 
                     for (pkg, ver) in &sol {
                         let key = (pkg.clone(), ver.to_string());
@@ -68,13 +68,13 @@ impl DepsResolver {
                                     .filter_map(|req| {
                                         let name = req.name.to_string();
                                         let version = sol.get(&name)?.to_string();
-                                        let node = DepRef { name, version };
+                                        let node = PkgRef { name, version };
                                         seen.insert(node.clone()).then_some(node)
                                     })
                                     .collect()
                             })
                             .unwrap_or_default();
-                        graph.insert(pkg.clone(), deps);
+                        graph.insert(PkgRef{name: pkg.clone(), version: ver.to_string()}, deps);
                     }
 
                     let packages: HashMap<String, String> =

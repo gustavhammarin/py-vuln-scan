@@ -6,7 +6,7 @@ use std::collections::{HashMap, HashSet};
 
 use serde::Serialize;
 
-use crate::{deps_resolver::DepRef, osv::OsvVuln};
+use crate::{deps_resolver::PkgRef, osv::OsvVuln};
 
 /// A node in the dependency tree.
 /// Each node owns its children, making the tree recursive.
@@ -27,7 +27,7 @@ impl DepNode {
     pub fn build(
         root: &str,
         root_ver: &str,
-        graph: &HashMap<String, Vec<DepRef>>,
+        graph: &HashMap<String, Vec<PkgRef>>,
         vulns: &[OsvVuln],
     ) -> Self {
         build_recursive(root, root_ver, graph, vulns, &mut HashSet::new())
@@ -53,7 +53,7 @@ impl DepNode {
 fn build_recursive(
     root: &str,
     root_ver: &str,
-    graph: &HashMap<String, Vec<DepRef>>,
+    graph: &HashMap<String, Vec<PkgRef>>,
     vulns: &[OsvVuln],
     visited: &mut HashSet<String>,
 ) -> DepNode {
@@ -147,15 +147,15 @@ mod tests {
     use std::collections::HashMap;
 
     use super::*;
-    use crate::{deps_resolver::DepRef, osv::{OsvAffected, OsvAffectedPackage, OsvVuln}};
+    use crate::{deps_resolver::PkgRef, osv::{OsvAffected, OsvAffectedPackage, OsvVuln}};
 
     // --- Helpers ------------------------------------------------------------
 
     /// Build an adjacency list from triples of (parent, child, child_version).
-    fn make_graph(edges: &[(&str, &str, &str)]) -> HashMap<String, Vec<DepRef>> {
-        let mut map: HashMap<String, Vec<DepRef>> = HashMap::new();
+    fn make_graph(edges: &[(&str, &str, &str)]) -> HashMap<String, Vec<PkgRef>> {
+        let mut map: HashMap<String, Vec<PkgRef>> = HashMap::new();
         for &(parent, child, child_ver) in edges {
-            map.entry(parent.to_string()).or_default().push(DepRef {
+            map.entry(parent.to_string()).or_default().push(PkgRef {
                 name: child.to_string(),
                 version: child_ver.to_string(),
             });
