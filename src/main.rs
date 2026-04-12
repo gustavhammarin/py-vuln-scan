@@ -1,18 +1,7 @@
-mod dep_graph;
-mod deps_resolver;
-mod error;
-mod osv;
-mod reachability_analysis;
-mod tui;
+use std::collections::HashMap;
 
 use clap::Parser;
-
-use crate::{
-    dep_graph::DepNode,
-    deps_resolver::DepsResolver,
-    error::AppError,
-    osv::VulnFetcher,
-};
+use pypi_scanner::{dep_graph::{ graph_builder::build_graph}, deps_resolver::DepsResolver, error::AppError, osv::{OsvVuln, VulnFetcher}};
 
 #[derive(Parser)]
 #[command(name = "pypi-scanner")]
@@ -34,25 +23,31 @@ async fn main() -> Result<(), AppError> {
         .fetch_vulnerabilities(deps.packages.clone())
         .await?;
 
-    let tree = DepNode::build(
-        &cli.package,
-        deps.packages.get(&cli.package).unwrap(),
-        &deps.graph,
-        &vulns,
-    );
-    
-    let chains = tree.vuln_chains();
+    let vuln_map = osv_vulns_to_map(vulns.clone());
 
-    tokio::fs::write("result.json", serde_json::to_string_pretty(&tree).unwrap())
+    let graph = build_graph(deps.graph, vuln_map);
+
+    let json_string = graph.to_json().unwrap();
+
+    let chains = graph.find_all_vulnerable_chains(&cli.package);
+
+    tokio::fs::write("result.json", json_string)
         .await
         .unwrap();
 
     tokio::fs::write("vulns.json", serde_json::to_string_pretty(&vulns).unwrap())
         .await
         .unwrap();
-    tokio::fs::write("vuln_chains.json", serde_json::to_string_pretty(&chains).unwrap())
+     tokio::fs::write("vuln_chains.json", serde_json::to_string_pretty(&chains).unwrap())
         .await
-        .unwrap();
+        .unwrap(); 
 
     Ok(())
+}
+
+fn osv_vulns_to_map(vulns: Vec<(String, Vec<OsvVuln>)>) -> HashMap<String, Vec<String>> {
+    vulns.into_iter().map(|(package, vulns)| {
+        let ids = vulns.into_iter().map(|v| v.id).collect();
+        (package, ids)
+    }).collect()
 }

@@ -1,53 +1,1135 @@
 {
-  "name": "requests",
-  "version": "2.20.0",
-  "depends_on": [
+  "edges": [
     {
-      "name": "chardet",
-      "version": "3.0.4",
-      "depends_on": [],
-      "vuln_ids": []
+      "from": "s3transfer",
+      "to": "botocore"
     },
     {
-      "name": "idna",
-      "version": "2.7",
-      "depends_on": [],
-      "vuln_ids": [
-        "GHSA-jjg7-2v4v-x38h",
-        "PYSEC-2024-60"
-      ]
+      "from": "jsonschema-specifications",
+      "to": "referencing"
     },
     {
-      "name": "urllib3",
-      "version": "1.24.3",
-      "depends_on": [],
-      "vuln_ids": [
-        "GHSA-2xpw-w6gg-jr37",
-        "GHSA-34jh-p97f-mpxf",
-        "GHSA-38jv-5279-wg99",
-        "GHSA-g4mx-q9vg-27p4",
-        "GHSA-gm62-xv2j-4w53",
-        "GHSA-pq67-6m6q-mj2v",
-        "GHSA-v845-jxx5-vc9f",
-        "GHSA-wqvq-5m8c-6g24",
-        "PYSEC-2020-148",
-        "PYSEC-2021-108",
-        "PYSEC-2023-192",
-        "PYSEC-2023-212"
-      ]
+      "from": "scipy",
+      "to": "numpy"
     },
     {
-      "name": "certifi",
-      "version": "2026.2.25",
-      "depends_on": [],
-      "vuln_ids": []
+      "from": "rich",
+      "to": "markdown-it-py"
+    },
+    {
+      "from": "rich",
+      "to": "pygments"
+    },
+    {
+      "from": "matplotlib",
+      "to": "contourpy"
+    },
+    {
+      "from": "matplotlib",
+      "to": "cycler"
+    },
+    {
+      "from": "matplotlib",
+      "to": "fonttools"
+    },
+    {
+      "from": "matplotlib",
+      "to": "kiwisolver"
+    },
+    {
+      "from": "matplotlib",
+      "to": "numpy"
+    },
+    {
+      "from": "matplotlib",
+      "to": "packaging"
+    },
+    {
+      "from": "matplotlib",
+      "to": "pillow"
+    },
+    {
+      "from": "matplotlib",
+      "to": "pyparsing"
+    },
+    {
+      "from": "matplotlib",
+      "to": "python-dateutil"
+    },
+    {
+      "from": "gunicorn",
+      "to": "packaging"
+    },
+    {
+      "from": "pandas",
+      "to": "numpy"
+    },
+    {
+      "from": "pandas",
+      "to": "python-dateutil"
+    },
+    {
+      "from": "pandas",
+      "to": "pytz"
+    },
+    {
+      "from": "pandas",
+      "to": "tzdata"
+    },
+    {
+      "from": "mako",
+      "to": "markupsafe"
+    },
+    {
+      "from": "graphql-relay",
+      "to": "graphql-core"
+    },
+    {
+      "from": "alembic",
+      "to": "sqlalchemy"
+    },
+    {
+      "from": "alembic",
+      "to": "mako"
+    },
+    {
+      "from": "alembic",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "importlib-metadata",
+      "to": "zipp"
+    },
+    {
+      "from": "markdown-it-py",
+      "to": "mdurl"
+    },
+    {
+      "from": "google-pasta",
+      "to": "six"
+    },
+    {
+      "from": "typing-inspection",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "jsonschema",
+      "to": "attrs"
+    },
+    {
+      "from": "jsonschema",
+      "to": "jsonschema-specifications"
+    },
+    {
+      "from": "jsonschema",
+      "to": "referencing"
+    },
+    {
+      "from": "jsonschema",
+      "to": "rpds-py"
+    },
+    {
+      "from": "flask",
+      "to": "blinker"
+    },
+    {
+      "from": "flask",
+      "to": "click"
+    },
+    {
+      "from": "flask",
+      "to": "itsdangerous"
+    },
+    {
+      "from": "flask",
+      "to": "jinja2"
+    },
+    {
+      "from": "flask",
+      "to": "markupsafe"
+    },
+    {
+      "from": "flask",
+      "to": "werkzeug"
+    },
+    {
+      "from": "scikit-learn",
+      "to": "numpy"
+    },
+    {
+      "from": "scikit-learn",
+      "to": "scipy"
+    },
+    {
+      "from": "scikit-learn",
+      "to": "joblib"
+    },
+    {
+      "from": "scikit-learn",
+      "to": "threadpoolctl"
+    },
+    {
+      "from": "jinja2",
+      "to": "markupsafe"
+    },
+    {
+      "from": "sagemaker-mlflow",
+      "to": "boto3"
+    },
+    {
+      "from": "sagemaker-mlflow",
+      "to": "mlflow"
+    },
+    {
+      "from": "python-dateutil",
+      "to": "six"
+    },
+    {
+      "from": "gitpython",
+      "to": "gitdb"
+    },
+    {
+      "from": "contourpy",
+      "to": "numpy"
+    },
+    {
+      "from": "pydantic",
+      "to": "annotated-types"
+    },
+    {
+      "from": "pydantic",
+      "to": "pydantic-core"
+    },
+    {
+      "from": "pydantic",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "pydantic",
+      "to": "typing-inspection"
+    },
+    {
+      "from": "sqlalchemy",
+      "to": "greenlet"
+    },
+    {
+      "from": "sqlalchemy",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "botocore",
+      "to": "jmespath"
+    },
+    {
+      "from": "botocore",
+      "to": "python-dateutil"
+    },
+    {
+      "from": "botocore",
+      "to": "urllib3"
+    },
+    {
+      "from": "docker",
+      "to": "requests"
+    },
+    {
+      "from": "docker",
+      "to": "urllib3"
+    },
+    {
+      "from": "referencing",
+      "to": "attrs"
+    },
+    {
+      "from": "referencing",
+      "to": "rpds-py"
+    },
+    {
+      "from": "referencing",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "sagemaker",
+      "to": "attrs"
+    },
+    {
+      "from": "sagemaker",
+      "to": "boto3"
+    },
+    {
+      "from": "sagemaker",
+      "to": "cloudpickle"
+    },
+    {
+      "from": "sagemaker",
+      "to": "docker"
+    },
+    {
+      "from": "sagemaker",
+      "to": "google-pasta"
+    },
+    {
+      "from": "sagemaker",
+      "to": "importlib-metadata"
+    },
+    {
+      "from": "sagemaker",
+      "to": "jsonschema"
+    },
+    {
+      "from": "sagemaker",
+      "to": "numpy"
+    },
+    {
+      "from": "sagemaker",
+      "to": "packaging"
+    },
+    {
+      "from": "sagemaker",
+      "to": "pandas"
+    },
+    {
+      "from": "sagemaker",
+      "to": "pathos"
+    },
+    {
+      "from": "sagemaker",
+      "to": "platformdirs"
+    },
+    {
+      "from": "sagemaker",
+      "to": "protobuf"
+    },
+    {
+      "from": "sagemaker",
+      "to": "psutil"
+    },
+    {
+      "from": "sagemaker",
+      "to": "pyyaml"
+    },
+    {
+      "from": "sagemaker",
+      "to": "requests"
+    },
+    {
+      "from": "sagemaker",
+      "to": "sagemaker-core"
+    },
+    {
+      "from": "sagemaker",
+      "to": "sagemaker-mlflow"
+    },
+    {
+      "from": "sagemaker",
+      "to": "schema"
+    },
+    {
+      "from": "sagemaker",
+      "to": "smdebug-rulesconfig"
+    },
+    {
+      "from": "sagemaker",
+      "to": "tblib"
+    },
+    {
+      "from": "sagemaker",
+      "to": "tqdm"
+    },
+    {
+      "from": "sagemaker",
+      "to": "urllib3"
+    },
+    {
+      "from": "opentelemetry-sdk",
+      "to": "opentelemetry-api"
+    },
+    {
+      "from": "boto3",
+      "to": "botocore"
+    },
+    {
+      "from": "boto3",
+      "to": "jmespath"
+    },
+    {
+      "from": "boto3",
+      "to": "s3transfer"
+    },
+    {
+      "from": "mlflow",
+      "to": "flask"
+    },
+    {
+      "from": "mlflow",
+      "to": "alembic"
+    },
+    {
+      "from": "mlflow",
+      "to": "cachetools"
+    },
+    {
+      "from": "mlflow",
+      "to": "click"
+    },
+    {
+      "from": "mlflow",
+      "to": "cloudpickle"
+    },
+    {
+      "from": "mlflow",
+      "to": "docker"
+    },
+    {
+      "from": "mlflow",
+      "to": "entrypoints"
+    },
+    {
+      "from": "mlflow",
+      "to": "gitpython"
+    },
+    {
+      "from": "mlflow",
+      "to": "graphene"
+    },
+    {
+      "from": "mlflow",
+      "to": "importlib-metadata"
+    },
+    {
+      "from": "mlflow",
+      "to": "markdown"
+    },
+    {
+      "from": "mlflow",
+      "to": "matplotlib"
+    },
+    {
+      "from": "mlflow",
+      "to": "numpy"
+    },
+    {
+      "from": "mlflow",
+      "to": "opentelemetry-api"
+    },
+    {
+      "from": "mlflow",
+      "to": "opentelemetry-sdk"
+    },
+    {
+      "from": "mlflow",
+      "to": "packaging"
+    },
+    {
+      "from": "mlflow",
+      "to": "pandas"
+    },
+    {
+      "from": "mlflow",
+      "to": "protobuf"
+    },
+    {
+      "from": "mlflow",
+      "to": "pyarrow"
+    },
+    {
+      "from": "mlflow",
+      "to": "pytz"
+    },
+    {
+      "from": "mlflow",
+      "to": "pyyaml"
+    },
+    {
+      "from": "mlflow",
+      "to": "querystring-parser"
+    },
+    {
+      "from": "mlflow",
+      "to": "requests"
+    },
+    {
+      "from": "mlflow",
+      "to": "scikit-learn"
+    },
+    {
+      "from": "mlflow",
+      "to": "scipy"
+    },
+    {
+      "from": "mlflow",
+      "to": "sqlalchemy"
+    },
+    {
+      "from": "mlflow",
+      "to": "sqlparse"
+    },
+    {
+      "from": "mlflow",
+      "to": "jinja2"
+    },
+    {
+      "from": "mlflow",
+      "to": "gunicorn"
+    },
+    {
+      "from": "gitdb",
+      "to": "smmap"
+    },
+    {
+      "from": "requests",
+      "to": "charset-normalizer"
+    },
+    {
+      "from": "requests",
+      "to": "idna"
+    },
+    {
+      "from": "requests",
+      "to": "urllib3"
+    },
+    {
+      "from": "requests",
+      "to": "certifi"
+    },
+    {
+      "from": "graphene",
+      "to": "graphql-core"
+    },
+    {
+      "from": "graphene",
+      "to": "graphql-relay"
+    },
+    {
+      "from": "graphene",
+      "to": "python-dateutil"
+    },
+    {
+      "from": "graphene",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "boto3"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "pydantic"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "pyyaml"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "jsonschema"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "platformdirs"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "rich"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "mock"
+    },
+    {
+      "from": "sagemaker-core",
+      "to": "importlib-metadata"
+    },
+    {
+      "from": "pyarrow",
+      "to": "numpy"
+    },
+    {
+      "from": "werkzeug",
+      "to": "markupsafe"
+    },
+    {
+      "from": "pydantic-core",
+      "to": "typing-extensions"
+    },
+    {
+      "from": "multiprocess",
+      "to": "dill"
+    },
+    {
+      "from": "pathos",
+      "to": "ppft"
+    },
+    {
+      "from": "pathos",
+      "to": "dill"
+    },
+    {
+      "from": "pathos",
+      "to": "pox"
+    },
+    {
+      "from": "pathos",
+      "to": "multiprocess"
     }
   ],
-  "vuln_ids": [
-    "GHSA-9hjg-9r4m-mvj7",
-    "GHSA-9wx4-h78v-vm56",
-    "GHSA-gc5v-m9x4-r6x2",
-    "GHSA-j8r2-6x86-q33q",
-    "PYSEC-2023-74"
+  "nodes": [
+    {
+      "is_vulnerable": false,
+      "package_id": "pillow",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": true,
+      "package_id": "sagemaker",
+      "vulnerabilities": [
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-5r2p-pjr8-7fh7",
+        "GHSA-62rc-f4v9-h543"
+      ]
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "cloudpickle",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "threadpoolctl",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "contourpy",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "opentelemetry-api",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "boto3",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "sagemaker-mlflow",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "schema",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": true,
+      "package_id": "protobuf",
+      "vulnerabilities": [
+        "GHSA-7gcm-g887-7qv7"
+      ]
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "tqdm",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "itsdangerous",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "jmespath",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "mock",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "gunicorn",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "certifi",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "click",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "graphql-relay",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "zipp",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "graphene",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "entrypoints",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "sagemaker-core",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "mako",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pygments",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "google-pasta",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "fonttools",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "attrs",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pytz",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "markdown",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "rich",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pathos",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "numpy",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "gitdb",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "multiprocess",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "sqlparse",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "greenlet",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pandas",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pyparsing",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "dill",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "python-dateutil",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "sqlalchemy",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "typing-inspection",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "kiwisolver",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": true,
+      "package_id": "pyarrow",
+      "vulnerabilities": [
+        "PYSEC-2024-161"
+      ]
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "requests",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "annotated-types",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "graphql-core",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "tzdata",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "gitpython",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "platformdirs",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pyyaml",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "botocore",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "cachetools",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "joblib",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pox",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": true,
+      "package_id": "mlflow",
+      "vulnerabilities": [
+        "PYSEC-2025-17",
+        "GHSA-6xj8-rrqx-r4cv",
+        "GHSA-pgqp-8h46-6x4j",
+        "GHSA-g6pg-52vf-843h",
+        "GHSA-wf7f-8fxf-xfxc",
+        "GHSA-ghv6-9r9j-wh4j",
+        "GHSA-gq3w-7jj3-x7gr",
+        "GHSA-76cg-cfhx-373f",
+        "GHSA-r23q-823p-vmf7",
+        "GHSA-xch3-2f9x-wh9f",
+        "PYSEC-2024-224",
+        "GHSA-x38x-g6gr-jqff",
+        "GHSA-4rqf-8pfm-p36r",
+        "GHSA-5cvj-7rg6-jggj",
+        "GHSA-7qhf-v65m-g5f3",
+        "PYSEC-2025-52",
+        "GHSA-fhff-qmm8-h2fp",
+        "GHSA-cwgg-w6mp-w9hg",
+        "GHSA-cv6c-7963-wxcg",
+        "GHSA-43c4-9qgj-x742",
+        "GHSA-wxj7-3fx5-pp9m",
+        "GHSA-7p8j-qv6x-f4g4",
+        "GHSA-j8mg-pqc5-x9gj",
+        "GHSA-4rj2-9gcx-5qhx",
+        "GHSA-46r5-x6jq-v8g6",
+        "GHSA-q2r8-vmq7-fpx2",
+        "GHSA-qpgc-w4mg-6v92",
+        "GHSA-q3gw-8236-5jw4",
+        "GHSA-vhcx-3pq2-4fvc",
+        "GHSA-49m6-vrr9-2cqm",
+        "GHSA-4x5p-f36r-mxxr",
+        "GHSA-fh64-r2vc-xvhr"
+      ]
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "typing-extensions",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "alembic",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "werkzeug",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "charset-normalizer",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "blinker",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "querystring-parser",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pydantic",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "importlib-metadata",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "tblib",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "smdebug-rulesconfig",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "mdurl",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "packaging",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "rpds-py",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "matplotlib",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "s3transfer",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "referencing",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "urllib3",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "smmap",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "jinja2",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "scikit-learn",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "idna",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "jsonschema-specifications",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "docker",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "ppft",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "jsonschema",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "psutil",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "opentelemetry-sdk",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "markupsafe",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "flask",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "pydantic-core",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "six",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "markdown-it-py",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "scipy",
+      "vulnerabilities": []
+    },
+    {
+      "is_vulnerable": false,
+      "package_id": "cycler",
+      "vulnerabilities": []
+    }
+  ],
+  "summary": {
+    "total_edges": 143,
+    "total_packages": 90,
+    "vulnerable_packages": 4
+  },
+  "vulnerabilities": [
+    {
+      "package": "sagemaker",
+      "vulns": [
+        "GHSA-32g6-mg92-ghm2",
+        "GHSA-rjrp-m2jw-pv9c",
+        "GHSA-5r2p-pjr8-7fh7",
+        "GHSA-62rc-f4v9-h543"
+      ]
+    },
+    {
+      "package": "protobuf",
+      "vulns": [
+        "GHSA-7gcm-g887-7qv7"
+      ]
+    },
+    {
+      "package": "pyarrow",
+      "vulns": [
+        "PYSEC-2024-161"
+      ]
+    },
+    {
+      "package": "mlflow",
+      "vulns": [
+        "PYSEC-2025-17",
+        "GHSA-6xj8-rrqx-r4cv",
+        "GHSA-pgqp-8h46-6x4j",
+        "GHSA-g6pg-52vf-843h",
+        "GHSA-wf7f-8fxf-xfxc",
+        "GHSA-ghv6-9r9j-wh4j",
+        "GHSA-gq3w-7jj3-x7gr",
+        "GHSA-76cg-cfhx-373f",
+        "GHSA-r23q-823p-vmf7",
+        "GHSA-xch3-2f9x-wh9f",
+        "PYSEC-2024-224",
+        "GHSA-x38x-g6gr-jqff",
+        "GHSA-4rqf-8pfm-p36r",
+        "GHSA-5cvj-7rg6-jggj",
+        "GHSA-7qhf-v65m-g5f3",
+        "PYSEC-2025-52",
+        "GHSA-fhff-qmm8-h2fp",
+        "GHSA-cwgg-w6mp-w9hg",
+        "GHSA-cv6c-7963-wxcg",
+        "GHSA-43c4-9qgj-x742",
+        "GHSA-wxj7-3fx5-pp9m",
+        "GHSA-7p8j-qv6x-f4g4",
+        "GHSA-j8mg-pqc5-x9gj",
+        "GHSA-4rj2-9gcx-5qhx",
+        "GHSA-46r5-x6jq-v8g6",
+        "GHSA-q2r8-vmq7-fpx2",
+        "GHSA-qpgc-w4mg-6v92",
+        "GHSA-q3gw-8236-5jw4",
+        "GHSA-vhcx-3pq2-4fvc",
+        "GHSA-49m6-vrr9-2cqm",
+        "GHSA-4x5p-f36r-mxxr",
+        "GHSA-fh64-r2vc-xvhr"
+      ]
+    }
   ]
 }

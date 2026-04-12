@@ -29,31 +29,28 @@ impl VulnFetcher {
     pub async fn fetch_vulnerabilities(
         &self,
         packages: HashMap<String, String>,
-    ) -> Result<Vec<OsvVuln>, AppError> {
+    ) -> Result<Vec<(String, Vec<OsvVuln>)>, AppError> {
         let results = stream::iter(packages)
-            .map(|(p, v)| self.fetch_vulns_for_package(p, v))
+            .map(|(p, v)| async move { self.fetch_vulns_for_package(&p, &v).await })
             .buffer_unordered(10)
             .filter_map(|r| async { r.ok() })
             .collect::<Vec<_>>()
-            .await
-            .into_iter()
-            .flatten()
-            .collect();
+            .await;
 
         Ok(results)
     }
 
     pub async fn fetch_vulns_for_package(
         &self,
-        name: String,
-        version: String,
-    ) -> Result<Vec<OsvVuln>, AppError> {
+        name: &str,
+        version: &str,
+    ) -> Result<(String, Vec<OsvVuln>), AppError> {
         let query = OsvQuery {
             package: OsvPackage {
-                name,
+                name: name.to_string(),
                 ecosystem: "PyPI".to_string(),
             },
-            version,
+            version: version.to_string(),
         };
 
         let response: OsvResponse = self
@@ -65,10 +62,9 @@ impl VulnFetcher {
             .json()
             .await?;
 
-        Ok(response.vulns.unwrap_or_default())
+        Ok((name.to_string(), response.vulns.unwrap_or_default()))
     }
 }
-
 // ---------------------------------------------------------------------------
 // Tests
 // ---------------------------------------------------------------------------
@@ -97,7 +93,10 @@ mod tests {
             .await
             .unwrap();
 
-        assert!(!vulns.is_empty(), "requests 2.6.0 should have known vulnerabilities");
+        assert!(
+            !vulns.is_empty(),
+            "requests 2.6.0 should have known vulnerabilities"
+        );
     }
 
     #[tokio::test]
@@ -105,13 +104,15 @@ mod tests {
         let mut packages = HashMap::new();
         packages.insert("requests".to_string(), "2.6.0".to_string());
 
-        let vulns = VulnFetcher::new()
+        let res = VulnFetcher::new()
             .fetch_vulnerabilities(packages)
             .await
             .unwrap();
 
-        for v in &vulns {
-            assert!(!v.id.is_empty());
+        for (_, o) in &res {
+            for v in o {
+                assert!(!v.id.is_empty())
+            }
         }
     }
 }
