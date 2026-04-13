@@ -3,6 +3,8 @@ use std::collections::{HashMap, HashSet};
 use serde::Serialize;
 use serde_json::{Value, json};
 
+use crate::deps_resolver::PkgRef;
+
 #[derive(Serialize, Debug, Clone, Default)]
 pub struct DepNode {
     pub package_id: String,
@@ -18,7 +20,7 @@ pub struct DepGraph {
 }
 
 impl DepGraph {
-    pub fn new() -> Self {
+    fn new() -> Self {
         Self {
             nodes: HashMap::new(),
             edges: HashMap::new(),
@@ -26,7 +28,30 @@ impl DepGraph {
         }
     }
 
-    pub fn add_node(&mut self, package_id: &str, version: &str) {
+    pub fn build_graph(
+        resolved_deps: HashMap<PkgRef, Vec<PkgRef>>,
+        vulns: HashMap<String, Vec<String>>,
+    ) -> Self {
+        let mut graph = Self::new();
+
+        for (pkg, deps) in resolved_deps.iter() {
+            graph.add_node(&pkg.name, &pkg.version);
+
+            if let Some(pkg_vulns) = vulns.get(&pkg.name) {
+                for vuln in pkg_vulns {
+                    graph.add_vulns(&pkg.name, vuln);
+                }
+            }
+
+            for dep in deps {
+                graph.add_edge(&pkg.name, &dep.name);
+            }
+        }
+
+        graph
+    }
+
+    fn add_node(&mut self, package_id: &str, version: &str) {
         self.nodes.insert(
             package_id.to_string(),
             DepNode {
@@ -44,7 +69,7 @@ impl DepGraph {
             .or_insert_with(Vec::new);
     }
 
-    pub fn add_edge(&mut self, from: &str, to: &str) {
+    fn add_edge(&mut self, from: &str, to: &str) {
         self.edges
             .entry(from.to_string())
             .or_insert_with(Vec::new)
@@ -56,7 +81,7 @@ impl DepGraph {
             .push(from.to_string());
     }
 
-    pub fn add_vulns(&mut self, package_id: &str, vuln_id: &str) {
+    fn add_vulns(&mut self, package_id: &str, vuln_id: &str) {
         if let Some(node) = self.nodes.get_mut(package_id) {
             node.is_vulnerable = true;
             node.vulnerabilities.insert(vuln_id.to_string());

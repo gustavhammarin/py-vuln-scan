@@ -3,15 +3,18 @@ mod schemas;
 
 #[cfg(test)]
 mod tests {
-    use crate::reachability_analysis::pypi_http::client::PypiSourceClient;
+    use crate::reachability_analysis::source_code_fetcher::client::SourceCodeFetcher;
 
     use super::*;
 
     #[tokio::test]
     async fn test_get_source_code() {
-        let pypi = PypiSourceClient::new();
-        let (temp, source_path) = pypi
-            .get_source_code("twine", "4.0.2")
+        let temp = tempfile::TempDir::new().unwrap();
+        let tmp_dir = temp.path();
+
+        let pypi = SourceCodeFetcher::new();
+        let source_path= pypi
+            .get_source_code("twine", "4.0.2", tmp_dir)
             .await
             .unwrap();
 
@@ -30,18 +33,24 @@ mod tests {
 
     #[tokio::test]
     async fn test_concurrent() {
-        let pypi = PypiSourceClient::new();
+        let pypi = SourceCodeFetcher::new();
         let packages = vec![("twine", "4.0.2"), ("requests", "2.31.0")];
+
+        let temp = tempfile::TempDir::new().unwrap();
+        let tmp_dir = temp.path().to_path_buf();
 
         let handles: Vec<_> = packages
             .into_iter()
             .map(|(pkg, ver)| {
                 let client = pypi.clone();
-                tokio::spawn(async move { client.get_source_code(pkg, ver).await })
+                let tp = tmp_dir.clone();
+                tokio::spawn(async move { client.get_source_code(pkg, ver, &tp).await })
             })
             .collect();
 
         let results = futures::future::join_all(handles).await;
+
+        drop(temp);
         for result in results {
             assert!(result.unwrap().is_ok());
         }

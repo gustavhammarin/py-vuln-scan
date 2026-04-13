@@ -1,15 +1,16 @@
+use std::path::Path;
 use std::{path::PathBuf, sync::Arc};
 use tempfile::TempDir;
-use crate::reachability_analysis::pypi_http::schemas::PypiResponse;
+use crate::reachability_analysis::source_code_fetcher::schemas::PypiResponse;
 
 use crate::{error::AppError};
 
 #[derive(Clone)]
-pub struct PypiSourceClient {
+pub struct SourceCodeFetcher {
     client: Arc<reqwest::Client>,
 }
 
-impl PypiSourceClient {
+impl SourceCodeFetcher {
     pub fn new() -> Self {
         Self {
             client: Arc::new(reqwest::Client::new()),
@@ -19,11 +20,12 @@ impl PypiSourceClient {
         &self,
         package_id: &str,
         version: &str,
-    ) -> Result<(TempDir, PathBuf), AppError> {
+        tmp_dir: &Path,
+    ) -> Result<PathBuf, AppError> {
         let sdist_url = self.get_sdist_url(package_id, version).await?;
-        let (temp, source_path) =
-            self.download_and_extract(package_id, version, &sdist_url).await?;
-        Ok((temp, source_path))
+        let source_path =
+            self.download_and_extract(package_id, version, &sdist_url, tmp_dir).await?;
+        Ok(source_path)
     }
     async fn get_sdist_url(
         &self,
@@ -44,30 +46,36 @@ impl PypiSourceClient {
         package_id: &str,
         version: &str,
         sdist_url: &str,
-    ) -> Result<(TempDir, PathBuf), AppError> {
-        let tmp_dir = tempfile::TempDir::new()?;
-        let tmp_path = tmp_dir.path().to_path_buf();
+        tmp_dir: &Path
+    ) -> Result<PathBuf, AppError> {
 
         let bytes = self.client.get(sdist_url).send().await?.bytes().await?;
 
         let tar_path = tmp_dir
-            .path()
             .join(format!("{package_id}-{version}.tar.gz"));
 
         tokio::fs::write(&tar_path, &bytes).await?;
 
-        let tp = tmp_dir.path().to_path_buf();
+        let extract_dir = tmp_dir.join(format!("{package_id}-{version}"));
+        tokio::fs::create_dir_all(&extract_dir).await?;
+
+        let tp = extract_dir.to_path_buf();
+        let tar_path_clone = tar_path.clone();
+
         tokio::task::spawn_blocking(move || {
-            let tar_gz = std::fs::File::open(&tar_path)?;
+            let tar_gz = std::fs::File::open(&tar_path_clone)?;
             let decompressed = flate2::read::GzDecoder::new(tar_gz);
             let mut archive = tar::Archive::new(decompressed);
-            archive.unpack(tp)?;
+            archive.unpack(&tp)?;
             Ok::<(), AppError>(())
         })
         .await??;
 
-        Ok((tmp_dir, tmp_path))
+
+        Ok(extract_dir)
     }
+
+
 }
 
 

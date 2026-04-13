@@ -15,5 +15,9 @@ pub enum AppError {
     #[error("task join failed: {0}")]
     Join(#[from] tokio::task::JoinError),
     #[error("not found: {0}")]
-    NotFound(String)
+    NotFound(String),
+    #[error("Tree sitter error: {0}")]
+    TreeSitterLanguageError(#[from] tree_sitter::LanguageError),
+    #[error("Tree sitter error: {0}")]
+    TreeSitterTreeParsingError(String),
 }
