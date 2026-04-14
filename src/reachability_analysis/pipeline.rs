@@ -6,17 +6,20 @@ use crate::{
     dep_graph::graph::DepNode,
     error::AppError,
     reachability_analysis::{
-        code_analyser::analyzer::CodeAnalyzer, source_code_fetcher::client::SourceCodeFetcher,
+        code_analyser::analyzer::{CodeAnalyzer, Finding},
+        source_code_fetcher::client::SourceCodeFetcher,
     },
 };
 
 #[derive(Debug, Clone, Serialize)]
 pub struct VulnChainAnalysis {
     pub chain: Vec<DepNode>,
-    pub findings: Vec<String>,
+    pub findings: Vec<Finding>,
 }
 
-pub async fn analyze_source(vuln_chains: &Vec<Vec<DepNode>>) -> Result<Vec<VulnChainAnalysis>, AppError> {
+pub async fn analyze_source(
+    vuln_chains: &Vec<Vec<DepNode>>,
+) -> Result<Vec<VulnChainAnalysis>, AppError> {
     let client = SourceCodeFetcher::new();
     let temp = tempfile::TempDir::new().unwrap();
     let tmp_dir = temp.path();
@@ -32,9 +35,9 @@ pub async fn analyze_source(vuln_chains: &Vec<Vec<DepNode>>) -> Result<Vec<VulnC
     for chain in vuln_chains {
         let mut chain_findings = Vec::new();
 
-        for i in 0..chain.len() - 1 {
-            let dep_to_track = &chain[i];
-            let target_dep = &chain[i + 1];
+        for window in chain.windows(2) {
+            let dep_to_track = &window[0];
+            let target_dep = &window[1];
 
             let key = (target_dep.package_id.clone(), target_dep.version.clone());
 
@@ -50,21 +53,7 @@ pub async fn analyze_source(vuln_chains: &Vec<Vec<DepNode>>) -> Result<Vec<VulnC
             };
 
             let analyzer = CodeAnalyzer::new(dep_to_track, target_dep, &source_dir)?;
-            let raw_findings = analyzer.analyze()?;
-
-            let findings: Vec<_> = raw_findings
-                .into_iter()
-                .map(|content| {
-                    format!(
-                        "[{}:{} uses {}:{}] {}",
-                        target_dep.package_id,
-                        target_dep.version,
-                        dep_to_track.package_id,
-                        dep_to_track.version,
-                        content
-                    )
-                })
-                .collect();
+            let findings = analyzer.analyze()?;
 
             chain_findings.extend(findings);
         }

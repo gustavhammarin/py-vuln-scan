@@ -1,0 +1,473 @@
+[
+  {
+    "chain": [
+      {
+        "package_id": "protobuf",
+        "version": "4.25.9",
+        "vulnerabilities": [
+          "GHSA-7gcm-g887-7qv7"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "vulnerabilities": [
+          "GHSA-wf7f-8fxf-xfxc",
+          "GHSA-43c4-9qgj-x742",
+          "GHSA-4rj2-9gcx-5qhx",
+          "GHSA-x38x-g6gr-jqff",
+          "GHSA-xch3-2f9x-wh9f",
+          "PYSEC-2024-224",
+          "GHSA-7qhf-v65m-g5f3",
+          "GHSA-fhff-qmm8-h2fp",
+          "GHSA-vhcx-3pq2-4fvc",
+          "GHSA-r23q-823p-vmf7",
+          "GHSA-q3gw-8236-5jw4",
+          "GHSA-g6pg-52vf-843h",
+          "GHSA-7p8j-qv6x-f4g4",
+          "GHSA-49m6-vrr9-2cqm",
+          "GHSA-4x5p-f36r-mxxr",
+          "GHSA-gq3w-7jj3-x7gr",
+          "GHSA-q2r8-vmq7-fpx2",
+          "PYSEC-2025-52",
+          "GHSA-pgqp-8h46-6x4j",
+          "GHSA-cwgg-w6mp-w9hg",
+          "GHSA-ghv6-9r9j-wh4j",
+          "GHSA-6xj8-rrqx-r4cv",
+          "GHSA-46r5-x6jq-v8g6",
+          "GHSA-wxj7-3fx5-pp9m",
+          "GHSA-qpgc-w4mg-6v92",
+          "GHSA-5cvj-7rg6-jggj",
+          "GHSA-76cg-cfhx-373f",
+          "GHSA-fh64-r2vc-xvhr",
+          "GHSA-cv6c-7963-wxcg",
+          "GHSA-j8mg-pqc5-x9gj",
+          "PYSEC-2025-17",
+          "GHSA-4rqf-8pfm-p36r"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "vulnerabilities": [],
+        "is_vulnerable": false
+      },
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "vulnerabilities": [
+          "GHSA-62rc-f4v9-h543",
+          "GHSA-32g6-mg92-ghm2",
+          "GHSA-rjrp-m2jw-pv9c",
+          "GHSA-5r2p-pjr8-7fh7"
+        ],
+        "is_vulnerable": true
+      }
+    ],
+    "findings": [
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_filesystem_service_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/scalapb/scalapb_pb2.py",
+        "extracted_content": "from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2 | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.MessageOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FileOptions.RegisterExtension | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_managed_catalog_messages_pb2.py",
+        "extracted_content": "from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/internal_pb2.py",
+        "extracted_content": "from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/service_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_pb2.py",
+        "extracted_content": "from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2 | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | google_dot_protobuf_dot_descriptor__pb2.EnumValueOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.EnumValueOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.EnumOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.MessageOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.MethodOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_uc_registry_messages_pb2.py",
+        "extracted_content": "from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/mlflow_artifacts_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_artifacts_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_managed_catalog_service_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/model_registry_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | from google.protobuf.internal import enum_type_wrapper | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | enum_type_wrapper.EnumTypeWrapper | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/facet_feature_statistics_pb2.py",
+        "extracted_content": "from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/protos/databricks_uc_registry_service_pb2.py",
+        "extracted_content": "from google.protobuf import service_reflection | from google.protobuf import service as _service | from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | service_reflection.GeneratedServiceStubType | dict | service_reflection.GeneratedServiceType | dict | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/server/handlers.py",
+        "extracted_content": "from google.protobuf.json_format import ParseError | from google.protobuf import descriptor | get_service_endpoints | get_service_endpoints | get_service_endpoints | ret.append | get_handler | service().GetRequestClass | service | _get_paths | service_method.GetOptions | HANDLERS.get | _get_ajax_path | _get_rest_path | os.environ.get | _add_static_prefix | _wrap_response | AbortMultipartUpload.Response | artifact_repo.abort_multipart_upload | _validate_support_multipart_upload | _get_artifact_repo_mlflow_artifacts | _get_request_message | AbortMultipartUpload | validate_path_is_safe | _wrap_response | CompleteMultipartUpload.Response | artifact_repo.complete_multipart_upload | _validate_support_multipart_upload | _get_artifact_repo_mlflow_artifacts | MultipartUploadPart.from_proto | _get_request_message | CompleteMultipartUpload | validate_path_is_safe | response.set_data | message_to_json | Response | create_response.to_proto | artifact_repo.create_multipart_upload | _validate_support_multipart_upload | _get_artifact_repo_mlflow_artifacts | _get_request_message | CreateMultipartUpload | validate_path_is_safe | _UnsupportedMultipartUploadException | isinstance | jsonify | schema.execute | request_json.get | request_json.get | request_json.get | _get_request_json | response.set_data | message_to_json | Response | DeleteArtifact.Response | artifact_repo.delete_artifacts | _get_artifact_repo_mlflow_artifacts | _get_request_message | DeleteArtifact | validate_path_is_safe | response.set_data | message_to_json | Response | response_message.files.extend | ListArtifacts.Response | files.append | new_file_info.to_proto | FileInfo | posixpath.basename | artifact_repo.list_artifacts | _get_artifact_repo_mlflow_artifacts | request_message.HasField | validate_path_is_safe | _get_request_message | ListArtifactsMlflowArtifacts | _wrap_response | UploadArtifact.Response | artifact_repo.log_artifact | _get_artifact_repo_mlflow_artifacts | f.write | len | request.stream.read | open | os.path.join | tempfile.TemporaryDirectory | posixpath.split | validate_path_is_safe | _response_with_file_attachment_headers | current_app.response_class | stream_and_remove_file | tmp_dir.cleanup | file_handle.close | open | artifact_repo.download_artifacts | _get_artifact_repo_mlflow_artifacts | tempfile.TemporaryDirectory | validate_path_is_safe | _wrap_response | GetModelVersionByAlias.Response | model_version.to_proto | _get_model_registry_store().get_model_version_by_alias | _get_model_registry_store | _get_request_message | GetModelVersionByAlias | _wrap_response | DeleteRegisteredModelAlias.Response | _get_model_registry_store().delete_registered_model_alias | _get_model_registry_store | _get_request_message | DeleteRegisteredModelAlias | _wrap_response | SetRegisteredModelAlias.Response | _get_model_registry_store().set_registered_model_alias | _get_model_registry_store | _get_request_message | SetRegisteredModelAlias | _wrap_response | DeleteModelVersionTag.Response | _get_model_registry_store().delete_model_version_tag | _get_model_registry_store | _get_request_message | DeleteModelVersionTag | _wrap_response | SetModelVersionTag.Response | _get_model_registry_store().set_model_version_tag | _get_model_registry_store | ModelVersionTag | _get_request_message | SetModelVersionTag | response_message.model_versions.extend | e.to_proto | SearchModelVersions.Response | store.search_model_versions | _get_model_registry_store | _wrap_response | search_model_versions_impl | _get_request_message | _assert_less_than_or_equal | int | SearchModelVersions | _wrap_response | GetModelVersionDownloadUri.Response | _get_model_registry_store().get_model_version_download_uri | _get_model_registry_store | _get_request_message | GetModelVersionDownloadUri | _wrap_response | DeleteModelVersion.Response | _get_model_registry_store().delete_model_version | _get_model_registry_store | _get_request_message | DeleteModelVersion | _wrap_response | TransitionModelVersionStage.Response | model_version.to_proto | _get_model_registry_store().transition_model_version_stage | _get_model_registry_store | _get_request_message | TransitionModelVersionStage | _wrap_response | UpdateModelVersion.Response | model_version.to_proto | _get_model_registry_store().update_model_version | _get_model_registry_store | request_message.HasField | _get_request_message | UpdateModelVersion | _wrap_response | GetModelVersion.Response | model_version.to_proto | _get_model_registry_store().get_model_version | _get_model_registry_store | _get_request_message | GetModelVersion | _send_artifact | get_artifact_repository | _get_proxied_run_artifact_destination_path | _get_artifact_repo_mlflow_artifacts | _is_servable_proxied_run_artifact_root | _get_model_registry_store().get_model_version_download_uri | _get_model_registry_store | validate_path_is_safe | request_dict.get | request_dict.get | parser.parse | request.query_string.decode | _wrap_response | CreateModelVersion.Response | model_version.to_proto | _get_model_registry_store().create_model_version | _get_model_registry_store | _validate_source | _get_request_message | CreateModelVersion | _validate_non_local_source_contains_relative_paths | MlflowException | pathlib.Path(\n                    local_file_uri_to_path(run.info.artifact_uri)\n                ).resolve | pathlib.Path | local_file_uri_to_path | is_local_uri | pathlib.Path(local_file_uri_to_path(source)).resolve | pathlib.Path | local_file_uri_to_path | store.get_run | _get_tracking_store | is_local_uri | MlflowException | os.path.splitdrive | pathlib.Path(source_path).resolve().as_posix | pathlib.Path(source_path).resolve | pathlib.Path | MlflowException | re.sub | urllib.parse.urlparse(source).path.rstrip | urllib.parse.urlparse | urllib.parse.unquote_plus | _wrap_response | DeleteRegisteredModelTag.Response | _get_model_registry_store().delete_registered_model_tag | _get_model_registry_store | _get_request_message | DeleteRegisteredModelTag | _wrap_response | SetRegisteredModelTag.Response | _get_model_registry_store().set_registered_model_tag | _get_model_registry_store | RegisteredModelTag | _get_request_message | SetRegisteredModelTag | _wrap_response | response_message.model_versions.extend | e.to_proto | GetLatestVersions.Response | _get_model_registry_store().get_latest_versions | _get_model_registry_store | _get_request_message | GetLatestVersions | _wrap_response | response_message.registered_models.extend | e.to_proto | SearchRegisteredModels.Response | store.search_registered_models | _get_model_registry_store | _get_request_message | _assert_less_than_or_equal | int | SearchRegisteredModels | _wrap_response | DeleteRegisteredModel.Response | _get_model_registry_store().delete_registered_model | _get_model_registry_store | _get_request_message | DeleteRegisteredModel | _wrap_response | RenameRegisteredModel.Response | registered_model.to_proto | _get_model_registry_store().rename_registered_model | _get_model_registry_store | _get_request_message | RenameRegisteredModel | _wrap_response | UpdateRegisteredModel.Response | registered_model.to_proto | _get_model_registry_store().update_registered_model | _get_model_registry_store | _get_request_message | UpdateRegisteredModel | _wrap_response | GetRegisteredModel.Response | registered_model.to_proto | _get_model_registry_store().get_registered_model | _get_model_registry_store | _get_request_message | GetRegisteredModel | _wrap_response | CreateRegisteredModel.Response | registered_model.to_proto | _get_model_registry_store().create_registered_model | _get_model_registry_store | _get_request_message | CreateRegisteredModel | response.set_data | message_to_json | Response | response.set_data | message_to_json | Response | LogModel.Response | _get_tracking_store().record_logged_model | Model.from_dict | _get_tracking_store | MlflowException | set | model.keys | MlflowException | json.loads | _get_request_message | LogModel | response.set_data | message_to_json | Response | LogBatch.Response | _get_tracking_store().log_batch | _get_tracking_store | RunTag.from_proto | Param.from_proto | Metric.from_proto | _get_request_message | LogBatch | _validate_batch_log_api_req | _get_request_json | _assert_required | param_or_tag.get | _assert_required | m.get | _assert_required | m.get | _assert_required | m.get | get_artifact_repository | response.set_data | message_to_json | Response | response_message.experiments.extend | e.to_proto | SearchExperiments.Response | _get_tracking_store().search_experiments | _get_tracking_store | _get_request_message | SearchExperiments | Response | _log_artifact_to_repo | f.write | open | os.makedirs | os.path.join | os.path.join | tempfile.TemporaryDirectory | artifact_repo.log_artifact | get_artifact_repository | os.path.join | os.path.join | _get_artifact_repo_mlflow_artifacts | _is_servable_proxied_run_artifact_root | posixpath.dirname | posixpath.basename | _get_tracking_store().get_run | _get_tracking_store | MlflowException | MlflowException | validate_path_is_safe | MlflowException | args.get | MlflowException | args.get | response.set_data | message_to_json | Response | response_message.run.MergeFrom | run.to_proto | CreateRun.Response | _create_promptlab_run_impl | _get_tracking_store | args.get | int | time.time | args.get | assert_arg_exists | args.get | Param | param.get | param.get | args.get | args.get | assert_arg_exists | args.get | Param | param.get | param.get | args.get | assert_arg_exists | args.get | args.get | Param | param.get | param.get | assert_arg_exists | args.get | assert_arg_exists | args.get | args.get | args.get | assert_arg_exists | args.get | _validate_content_type | MlflowException | MlflowException | response.json | requests.request | args.get | MlflowException | args.get | MLFLOW_DEPLOYMENTS_TARGET.get | _not_implemented | store._search_datasets | summary.to_dict | hasattr | _get_tracking_store | MlflowException | len | len | MlflowException | request.json.get | _validate_content_type | response.set_data | message_to_json | Response | response_message.metrics.extend | m.to_proto | GetMetricHistoryBulkInterval.Response | _default_history_bulk_interval_impl | metrics_with_run_ids.extend | store.get_metric_history_bulk_interval_from_steps | _get_sampled_steps | sorted | sampled_steps.union | _get_sampled_steps_from_steps | sorted | max | min | store.get_metric_history | MlflowException.invalid_parameter_value | MlflowException.invalid_parameter_value | int | int | args.get | args.get | _get_tracking_store | int | args.get | _get_request_message | _assert_intlike_within_range | int | _assert_less_than_or_equal | len | len | GetMetricHistoryBulkInterval | set | sampled_steps.append | sampled_steps.append | int | range | set | bisect.bisect_right | bisect.bisect_left | _default_history_bulk_impl | store.get_metric_history_bulk | metric.to_dict | hasattr | metrics_with_run_ids.extend | sorted | store.get_metric_history | sorted | _get_tracking_store | min | int | request.args.get | MlflowException | request.args.get | MlflowException | len | len | MlflowException | request.args.to_dict(flat=False).get | request.args.to_dict | response.set_data | message_to_json | Response | response_message.metrics.extend | m.to_proto | _get_tracking_store().get_metric_history | _get_tracking_store | GetMetricHistory.Response | _get_request_message | GetMetricHistory | artifact_entities.append | FileInfo | posixpath.join | posixpath.basename | artifact_destination_repo.list_artifacts | _get_proxied_run_artifact_destination_path | _get_artifact_repo_mlflow_artifacts | urllib.parse.urlparse | response.set_data | message_to_json | Response | response_message.files.extend | a.to_proto | _get_artifact_repo(run).list_artifacts | _get_artifact_repo | _list_artifacts_for_proxied_run_artifact_root | _is_servable_proxied_run_artifact_root | _get_tracking_store().get_run | _get_tracking_store | validate_path_is_safe | request_message.HasField | ListArtifacts.Response | _get_request_message | ListArtifacts | response.set_data | message_to_json | Response | response_message.runs.extend | r.to_proto | _get_tracking_store().search_runs | _get_tracking_store | ViewType.from_proto | request_message.HasField | SearchRuns.Response | _get_request_message | _assert_less_than_or_equal | int | SearchRuns | response_message.run.MergeFrom | _get_tracking_store().get_run(run_id).to_proto | _get_tracking_store().get_run | _get_tracking_store | GetRun.Response | response.set_data | message_to_json | Response | get_run_impl | _get_request_message | GetRun | response.set_data | message_to_json | Response | DeleteTag.Response | _get_tracking_store().delete_tag | _get_tracking_store | _get_request_message | DeleteTag | response.set_data | message_to_json | Response | SetTag.Response | _get_tracking_store().set_tag | _get_tracking_store | RunTag | _get_request_message | SetTag | response.set_data | message_to_json | Response | SetExperimentTag.Response | _get_tracking_store().set_experiment_tag | _get_tracking_store | ExperimentTag | _get_request_message | SetExperimentTag | response.set_data | message_to_json | Response | LogInputs.Response | _get_tracking_store().log_inputs | _get_tracking_store | DatasetInput.from_proto | _get_request_message | LogInputs | response.set_data | message_to_json | Response | LogParam.Response | _get_tracking_store().log_param | _get_tracking_store | Param | _get_request_message | LogParam | response.set_data | message_to_json | Response | LogMetric.Response | _get_tracking_store().log_metric | _get_tracking_store | Metric | _get_request_message | LogMetric | response.set_data | message_to_json | Response | RestoreRun.Response | _get_tracking_store().restore_run | _get_tracking_store | _get_request_message | RestoreRun | response.set_data | message_to_json | Response | DeleteRun.Response | _get_tracking_store().delete_run | _get_tracking_store | _get_request_message | DeleteRun | response.set_data | message_to_json | Response | UpdateRun.Response | updated_info.to_proto | _get_tracking_store().update_run_info | _get_tracking_store | request_message.HasField | request_message.HasField | request_message.HasField | _get_request_message | UpdateRun | response.set_data | message_to_json | Response | response_message.run.MergeFrom | run.to_proto | CreateRun.Response | _get_tracking_store().create_run | _get_tracking_store | RunTag | _get_request_message | CreateRun | response.set_data | message_to_json | Response | UpdateExperiment.Response | _get_tracking_store().rename_experiment | _get_tracking_store | _get_request_message | UpdateExperiment | response.set_data | message_to_json | Response | RestoreExperiment.Response | _get_tracking_store().restore_experiment | _get_tracking_store | _get_request_message | RestoreExperiment | response.set_data | message_to_json | Response | DeleteExperiment.Response | _get_tracking_store().delete_experiment | _get_tracking_store | _get_request_message | DeleteExperiment | response.set_data | message_to_json | Response | response_message.experiment.MergeFrom | store_exp.to_proto | MlflowException | _get_tracking_store().get_experiment_by_name | _get_tracking_store | GetExperimentByName.Response | _get_request_message | GetExperimentByName | response_message.experiment.MergeFrom | _get_tracking_store().get_experiment(request_message.experiment_id).to_proto | _get_tracking_store().get_experiment | _get_tracking_store | GetExperiment.Response | response.set_data | message_to_json | Response | get_experiment_impl | _get_request_message | GetExperiment | response.set_data | message_to_json | Response | CreateExperiment.Response | _get_tracking_store().create_experiment | _get_tracking_store | validate_query_string | MlflowException | urllib.parse.urlparse | ExperimentTag | _get_request_message | CreateExperiment | Response | _send_artifact | _get_artifact_repo | _get_proxied_run_artifact_destination_path | _get_artifact_repo_mlflow_artifacts | _is_servable_proxied_run_artifact_root | _get_tracking_store().get_run | _get_tracking_store | validate_path_is_safe | request_dict.get | request_dict.get | parser.parse | request.query_string.decode | func | Response | os.environ.get | wraps | func | Response | _is_serving_proxied_artifacts | wraps | e.get_http_status_code | response.set_data | e.serialize_as_json | Response | func | wraps | _response_with_file_attachment_headers | send_file | _guess_mime_type | os.path.abspath | artifact_repository.download_artifacts | pathlib.Path | _guess_mime_type | _validate_param_against_schema | request_json.get | request_json.get | schema.items | parse_dict | json.loads | is_string_type | _get_request_json | isinstance | parser.parse | re.sub | flask_request.query_string.decode | len | flask_request.get_json | _validate_content_type | MlflowException | type | f | all | isinstance | AssertionError | AssertionError | AssertionError | AssertionError | isinstance | isinstance | float | isinstance | isinstance | int | isinstance | _get_model_registry_store | _get_tracking_store | registry_utils.set_registry_uri | _model_registry_store_registry.get_store | os.environ.get | os.environ.get | utils.set_tracking_uri | _tracking_store_registry.get_store | os.environ.get | os.environ.get | posixpath.join | parsed_proxied_artifact_root.path.split(\n            mlflow_artifacts_http_route_anchor\n        )[1].lstrip | parsed_proxied_artifact_root.path.split | parsed_proxied_artifact_root.path.lstrip | urllib.parse.urlparse | _is_serving_proxied_artifacts | urllib.parse.urlparse | os.environ.get | get_artifact_repository | ModelRegistryStoreRegistryWrapper | TrackingStoreRegistryWrapper | SqlAlchemyStore | FileStore | self.register_entrypoints | self.register | self.register | self.register | super().__init__ | super | SqlAlchemyStore | FileStore | self.register_entrypoints | self.register | self.register | self.register | super().__init__ | super | logging.getLogger"
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/utils/proto_json_utils.py",
+        "extracted_content": "from google.protobuf.json_format import MessageToJson, ParseDict | from google.protobuf.descriptor import FieldDescriptor | json.dumps | isinstance | isinstance | MlflowException | type | isinstance | isinstance | data.tolist | isinstance | get_jsonable_input | isinstance | data.to_dict | isinstance | data.toarray | isinstance | importlib.util.find_spec | MlflowException | type | data.tolist | isinstance | super().default | super | o.tolist | isinstance | o.isoformat | isinstance | MlflowInvalidInputException | _cast_schema_type | parse_instances_data | MlflowInvalidInputException | list | inp_dict.keys | list | inp_dict.keys | list | inp_dict.keys | MlflowInvalidInputException | MlflowInvalidInputException | all | len | len | list | check_data.keys | list | set | check_data.keys | set | isinstance | schema.input_dict().items | schema.input_dict | schema.required_input_names | schema.has_input_names | isinstance | data.items | isinstance | _cast_schema_type | data_dict.items | np.array | data_dict[col].append | convert_data_type | types_dict.get | item.items | schema.has_input_names | schema.input_dict | defaultdict | isinstance | len | isinstance | MlflowInvalidInputException | MlflowInvalidInputException | convert_data_type | convert_data_type | data.items | convert_data_type | types_dict.get | all | isinstance | isinstance | input_data.items | convert_data_type | types_dict.get | isinstance | MlflowInvalidInputException | type | isinstance | schema.has_input_names | next | iter | any | isinstance | isinstance | len | schema.has_input_names | schema.input_dict | deepcopy | MlflowInvalidInputException | MlflowInvalidInputException | MlflowInvalidInputException | _enforce_map | isinstance | _enforce_object | isinstance | np.array | _enforce_array | isinstance | np.array | spec.type.to_numpy | isinstance | np.array | spec.type.to_numpy | isinstance | isinstance | np.array | isinstance | np.array | pd.DataFrame(data).to_dict | pd.DataFrame | isinstance | data.to_dict | isinstance | data.tolist | isinstance | dataframe_from_parsed_json | json.loads | json.load | open | os.path.exists | cast_df_types_according_to_schema | MlflowInvalidInputException | pd.DataFrame | decoded_input.get | decoded_input.get | MlflowInvalidInputException | keys.difference | set | decoded_input.keys | MlflowInvalidInputException | type | isinstance | isinstance | MlflowInvalidInputException | pd.DataFrame | MlflowInvalidInputException | type | isinstance | isinstance | MlflowFailedTypeConversion | pdf[col_name].astype | pdf[col_name].map | _enforce_map | isinstance | pdf[col_name].map | _enforce_object | isinstance | pdf[col_name].map | _enforce_array | isinstance | isinstance | schema.is_tensor_spec | pdf[col_name].map | bytes | np.dtype | pdf[col_name].map | base64.decodebytes | bytes | isinstance | col_type_spec.to_pandas | isinstance | zip | schema.input_types | min | len | len | schema.input_types | zip | schema.input_types | len | schema.input_types | schema.is_tensor_spec | zip | schema.input_types | schema.input_names | schema.has_input_names | set | super().__init__ | super | super().__init__ | super | super().default | super | self.try_convert | o.isoformat | isinstance | np.datetime_as_string | isinstance | encode_binary | isinstance | o.item | isinstance | o.tolist | np.vectorize(encode_binary) | np.vectorize | o.tolist | self.try_convert | isinstance | base64.encodebytes(x).decode | base64.encodebytes | ParseDict | _stringify_all_experiment_ids | _stringify_all_experiment_ids | isinstance | _stringify_all_experiment_ids | str | isinstance | str | str | x.items | isinstance | json.dumps | _merge_json_dicts | _mark_int64_fields | json.loads | MessageToJson | _merge_json_dicts | isinstance | enumerate | isinstance | _merge_json_dicts | isinstance | str | str | str | isinstance | from_dict.items | ftype | ftype | partial | _mark_int64_fields_for_proto_maps | field.message_type.GetOptions | proto_message.ListFields | isinstance | int | _mark_int64_fields | proto_map.items"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth.py",
+        "extracted_content": "from sagemaker_mlflow.credential_cache import CredentialCache | sha256(request_body).hexdigest | sha256 | file_obj.seek | checksum.hexdigest | checksum.update | iter | sha256 | functools.partial | file_obj.tell | hasattr | hasattr | hasattr | final_request.prepare | AWSRequest | self.sigv4.add_auth | AWSRequest | (url or \"\").replace | self.get_request_body_header | body_bytes.encode | isinstance | self._credential_cache.set_credentials | max | min | int | os.environ.get | sts_client.assume_role | session.client | boto3.Session | self._credential_cache.get_credentials | SigV4Auth | session.get_credentials | boto3.Session | boto3.Session(\n                aws_access_key_id=credentials[\"AccessKeyId\"],\n                aws_secret_access_key=credentials[\"SecretAccessKey\"],\n                aws_session_token=credentials[\"SessionToken\"],\n            ).get_credentials | boto3.Session | self._get_cached_credentials | CredentialCache"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/presigned_url.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | import mlflow | ResourceTypeUnsupportedException | sagemaker_client.create_presigned_mlflow_app_url | sagemaker_client.create_presigned_mlflow_tracking_server_url | session.client | session.client | boto3.Session | sts_client.assume_role | session.client | boto3.Session | os.environ.get | os.environ.get | host_metadata_provider.set_arn | mlflow.get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from sagemaker_mlflow.auth import AuthBoto | ResourceTypeUnsupportedException | AuthBoto | self._get_auth_service_name | os.environ.get | self.host_metadata_provider.set_arn | get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_registry_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.model_registry.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.tracking.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_helpers.py",
+        "extracted_content": "from sagemaker_mlflow.exceptions import MlflowSageMakerException, ResourceTypeUnsupportedException | MlflowSageMakerException | MlflowSageMakerException | splitted_arn[5].split | splitted_arn[5].split | assume_role_arn.split | os.environ.get | ResourceTypeUnsupportedException | self._get_dns_suffix | MlflowSageMakerException | MlflowSageMakerException | self._get_endpoint | logging.info | os.environ.get | self._validate_arn | self._validate_arn | splitted_arn[5].split | splitted_arn[5].split | sagemaker_mlflow_host_arn.split | MlflowSageMakerException | warnings.warn | get_dns_suffix | validate_and_parse_arn | logging.info | os.environ.get | warnings.warn | MlflowSageMakerException | Arn | warnings.warn | MlflowSageMakerException | MlflowSageMakerException | self.__class__ | os.environ.get | splitted_arn[5].split | splitted_arn[5].split | arn.split | warnings.warn"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_request_header_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from mlflow.tracking.request_header.abstract_request_header_provider import RequestHeaderProvider | ResourceTypeUnsupportedException | self._get_arn_header | self.host_metadata_provider.set_arn | get_tracking_uri | super().__init__ | super | SageMakerMLflowHostMetadataProvider"
+      }
+    ]
+  },
+  {
+    "chain": [
+      {
+        "package_id": "protobuf",
+        "version": "4.25.9",
+        "vulnerabilities": [
+          "GHSA-7gcm-g887-7qv7"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "vulnerabilities": [
+          "GHSA-62rc-f4v9-h543",
+          "GHSA-32g6-mg92-ghm2",
+          "GHSA-rjrp-m2jw-pv9c",
+          "GHSA-5r2p-pjr8-7fh7"
+        ],
+        "is_vulnerable": true
+      }
+    ],
+    "findings": [
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-2.232.2/sagemaker-2.232.2/src/sagemaker/amazon/record_pb2.py",
+        "extracted_content": "from google.protobuf import symbol_database as _symbol_database | from google.protobuf import reflection as _reflection | from google.protobuf import message as _message | from google.protobuf import descriptor_pool as _descriptor_pool | from google.protobuf import descriptor as _descriptor | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _sym_db.RegisterMessage | _reflection.GeneratedProtocolMessageType | _descriptor_pool.Default().AddSerializedFile | _descriptor_pool.Default | _symbol_database.Default"
+      }
+    ]
+  },
+  {
+    "chain": [
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "vulnerabilities": [
+          "GHSA-wf7f-8fxf-xfxc",
+          "GHSA-43c4-9qgj-x742",
+          "GHSA-4rj2-9gcx-5qhx",
+          "GHSA-x38x-g6gr-jqff",
+          "GHSA-xch3-2f9x-wh9f",
+          "PYSEC-2024-224",
+          "GHSA-7qhf-v65m-g5f3",
+          "GHSA-fhff-qmm8-h2fp",
+          "GHSA-vhcx-3pq2-4fvc",
+          "GHSA-r23q-823p-vmf7",
+          "GHSA-q3gw-8236-5jw4",
+          "GHSA-g6pg-52vf-843h",
+          "GHSA-7p8j-qv6x-f4g4",
+          "GHSA-49m6-vrr9-2cqm",
+          "GHSA-4x5p-f36r-mxxr",
+          "GHSA-gq3w-7jj3-x7gr",
+          "GHSA-q2r8-vmq7-fpx2",
+          "PYSEC-2025-52",
+          "GHSA-pgqp-8h46-6x4j",
+          "GHSA-cwgg-w6mp-w9hg",
+          "GHSA-ghv6-9r9j-wh4j",
+          "GHSA-6xj8-rrqx-r4cv",
+          "GHSA-46r5-x6jq-v8g6",
+          "GHSA-wxj7-3fx5-pp9m",
+          "GHSA-qpgc-w4mg-6v92",
+          "GHSA-5cvj-7rg6-jggj",
+          "GHSA-76cg-cfhx-373f",
+          "GHSA-fh64-r2vc-xvhr",
+          "GHSA-cv6c-7963-wxcg",
+          "GHSA-j8mg-pqc5-x9gj",
+          "PYSEC-2025-17",
+          "GHSA-4rqf-8pfm-p36r"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "vulnerabilities": [],
+        "is_vulnerable": false
+      },
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "vulnerabilities": [
+          "GHSA-62rc-f4v9-h543",
+          "GHSA-32g6-mg92-ghm2",
+          "GHSA-rjrp-m2jw-pv9c",
+          "GHSA-5r2p-pjr8-7fh7"
+        ],
+        "is_vulnerable": true
+      }
+    ],
+    "findings": [
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth.py",
+        "extracted_content": "from sagemaker_mlflow.credential_cache import CredentialCache | sha256(request_body).hexdigest | sha256 | file_obj.seek | checksum.hexdigest | checksum.update | iter | sha256 | functools.partial | file_obj.tell | hasattr | hasattr | hasattr | final_request.prepare | AWSRequest | self.sigv4.add_auth | AWSRequest | (url or \"\").replace | self.get_request_body_header | body_bytes.encode | isinstance | self._credential_cache.set_credentials | max | min | int | os.environ.get | sts_client.assume_role | session.client | boto3.Session | self._credential_cache.get_credentials | SigV4Auth | session.get_credentials | boto3.Session | boto3.Session(\n                aws_access_key_id=credentials[\"AccessKeyId\"],\n                aws_secret_access_key=credentials[\"SecretAccessKey\"],\n                aws_session_token=credentials[\"SessionToken\"],\n            ).get_credentials | boto3.Session | self._get_cached_credentials | CredentialCache"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/presigned_url.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | import mlflow | ResourceTypeUnsupportedException | sagemaker_client.create_presigned_mlflow_app_url | sagemaker_client.create_presigned_mlflow_tracking_server_url | session.client | session.client | boto3.Session | sts_client.assume_role | session.client | boto3.Session | os.environ.get | os.environ.get | host_metadata_provider.set_arn | mlflow.get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from sagemaker_mlflow.auth import AuthBoto | ResourceTypeUnsupportedException | AuthBoto | self._get_auth_service_name | os.environ.get | self.host_metadata_provider.set_arn | get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_registry_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.model_registry.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.tracking.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_helpers.py",
+        "extracted_content": "from sagemaker_mlflow.exceptions import MlflowSageMakerException, ResourceTypeUnsupportedException | MlflowSageMakerException | MlflowSageMakerException | splitted_arn[5].split | splitted_arn[5].split | assume_role_arn.split | os.environ.get | ResourceTypeUnsupportedException | self._get_dns_suffix | MlflowSageMakerException | MlflowSageMakerException | self._get_endpoint | logging.info | os.environ.get | self._validate_arn | self._validate_arn | splitted_arn[5].split | splitted_arn[5].split | sagemaker_mlflow_host_arn.split | MlflowSageMakerException | warnings.warn | get_dns_suffix | validate_and_parse_arn | logging.info | os.environ.get | warnings.warn | MlflowSageMakerException | Arn | warnings.warn | MlflowSageMakerException | MlflowSageMakerException | self.__class__ | os.environ.get | splitted_arn[5].split | splitted_arn[5].split | arn.split | warnings.warn"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_request_header_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from mlflow.tracking.request_header.abstract_request_header_provider import RequestHeaderProvider | ResourceTypeUnsupportedException | self._get_arn_header | self.host_metadata_provider.set_arn | get_tracking_uri | super().__init__ | super | SageMakerMLflowHostMetadataProvider"
+      }
+    ]
+  },
+  {
+    "chain": [
+      {
+        "package_id": "pyarrow",
+        "version": "15.0.2",
+        "vulnerabilities": [
+          "PYSEC-2024-161"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "vulnerabilities": [
+          "GHSA-wf7f-8fxf-xfxc",
+          "GHSA-43c4-9qgj-x742",
+          "GHSA-4rj2-9gcx-5qhx",
+          "GHSA-x38x-g6gr-jqff",
+          "GHSA-xch3-2f9x-wh9f",
+          "PYSEC-2024-224",
+          "GHSA-7qhf-v65m-g5f3",
+          "GHSA-fhff-qmm8-h2fp",
+          "GHSA-vhcx-3pq2-4fvc",
+          "GHSA-r23q-823p-vmf7",
+          "GHSA-q3gw-8236-5jw4",
+          "GHSA-g6pg-52vf-843h",
+          "GHSA-7p8j-qv6x-f4g4",
+          "GHSA-49m6-vrr9-2cqm",
+          "GHSA-4x5p-f36r-mxxr",
+          "GHSA-gq3w-7jj3-x7gr",
+          "GHSA-q2r8-vmq7-fpx2",
+          "PYSEC-2025-52",
+          "GHSA-pgqp-8h46-6x4j",
+          "GHSA-cwgg-w6mp-w9hg",
+          "GHSA-ghv6-9r9j-wh4j",
+          "GHSA-6xj8-rrqx-r4cv",
+          "GHSA-46r5-x6jq-v8g6",
+          "GHSA-wxj7-3fx5-pp9m",
+          "GHSA-qpgc-w4mg-6v92",
+          "GHSA-5cvj-7rg6-jggj",
+          "GHSA-76cg-cfhx-373f",
+          "GHSA-fh64-r2vc-xvhr",
+          "GHSA-cv6c-7963-wxcg",
+          "GHSA-j8mg-pqc5-x9gj",
+          "PYSEC-2025-17",
+          "GHSA-4rqf-8pfm-p36r"
+        ],
+        "is_vulnerable": true
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "vulnerabilities": [],
+        "is_vulnerable": false
+      },
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "vulnerabilities": [
+          "GHSA-62rc-f4v9-h543",
+          "GHSA-32g6-mg92-ghm2",
+          "GHSA-rjrp-m2jw-pv9c",
+          "GHSA-5r2p-pjr8-7fh7"
+        ],
+        "is_vulnerable": true
+      }
+    ],
+    "findings": [
+      {
+        "package_id": "mlflow",
+        "version": "2.13.2",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/mlflow-2.13.2/mlflow-2.13.2/mlflow/store/artifact/hdfs_artifact_repo.py",
+        "extracted_content": "import pyarrow | dict | extra_conf.split | as_pair | config.split | f.write | hdfs.open(remote_file_path, \"rb\").read | hdfs.open | open | os.makedirs | os.path.exists | os.path.dirname | os.path.abspath | tempfile.mkdtemp | _relative_path | relative_path_to_artifact_path | _relative_path | path_module.relpath | posixpath.join | urllib.parse.urlparse | connected.close | pyarrow.hdfs.connect | pyarrow.fs.HadoopFileSystem | packaging.version.parse | packaging.version.parse | _parse_extra_conf | MLFLOW_PYARROW_EXTRA_CONF.get | MLFLOW_KERBEROS_USER.get | MLFLOW_KERBEROS_TICKET_CACHE.get | hdfs.delete | hdfs_system | posixpath.join | MlflowException | _download_hdfs_file | mkdir | os.path.join | _relative_path_remote | self._walk_path | _download_hdfs_file | os.path.join | os.path.normpath | hdfs.isdir | hdfs_system | _tmp_dir | os.path.abspath | os.path.exists | _resolve_base_path | hdfs.info(hdfs_path).get | hdfs.info | hdfs.info(file_path).get | hdfs.info | hdfs.isdir | posixpath.join | hdfs.info(subdir).get | hdfs.info | hdfs.isdir | hdfs.walk | hdfs.isdir | hdfs.exists | sorted | paths.append | FileInfo | file_detail.get | file_detail.get | _relative_path_remote | file_name.index | file_detail.get | hdfs.ls | hdfs.exists | hdfs_system | _resolve_base_path | hdfs.upload | open | posixpath.join | os.path.join | hdfs.mkdir | hdfs.exists | posixpath.join | _relative_path_local | os.walk | hdfs.mkdir | hdfs.exists | hdfs_system | _resolve_base_path | hdfs.upload | open | posixpath.join | os.path.split | hdfs_system | _resolve_base_path | super().__init__ | super | _resolve_connection_params"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth.py",
+        "extracted_content": "from sagemaker_mlflow.credential_cache import CredentialCache | sha256(request_body).hexdigest | sha256 | file_obj.seek | checksum.hexdigest | checksum.update | iter | sha256 | functools.partial | file_obj.tell | hasattr | hasattr | hasattr | final_request.prepare | AWSRequest | self.sigv4.add_auth | AWSRequest | (url or \"\").replace | self.get_request_body_header | body_bytes.encode | isinstance | self._credential_cache.set_credentials | max | min | int | os.environ.get | sts_client.assume_role | session.client | boto3.Session | self._credential_cache.get_credentials | SigV4Auth | session.get_credentials | boto3.Session | boto3.Session(\n                aws_access_key_id=credentials[\"AccessKeyId\"],\n                aws_secret_access_key=credentials[\"SecretAccessKey\"],\n                aws_session_token=credentials[\"SessionToken\"],\n            ).get_credentials | boto3.Session | self._get_cached_credentials | CredentialCache"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/presigned_url.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | import mlflow | ResourceTypeUnsupportedException | sagemaker_client.create_presigned_mlflow_app_url | sagemaker_client.create_presigned_mlflow_tracking_server_url | session.client | session.client | boto3.Session | sts_client.assume_role | session.client | boto3.Session | os.environ.get | os.environ.get | host_metadata_provider.set_arn | mlflow.get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/auth_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from sagemaker_mlflow.auth import AuthBoto | ResourceTypeUnsupportedException | AuthBoto | self._get_auth_service_name | os.environ.get | self.host_metadata_provider.set_arn | get_tracking_uri | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_registry_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.model_registry.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_store.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from mlflow.utils import rest_utils | from mlflow.store.tracking.rest_store import RestStore | rest_utils.MlflowHostCreds | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | os.environ.get | host_metadata_provider.construct_tracking_server_url | host_metadata_provider.set_arn | super().__init__ | partial | super | SageMakerMLflowHostMetadataProvider"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_helpers.py",
+        "extracted_content": "from sagemaker_mlflow.exceptions import MlflowSageMakerException, ResourceTypeUnsupportedException | MlflowSageMakerException | MlflowSageMakerException | splitted_arn[5].split | splitted_arn[5].split | assume_role_arn.split | os.environ.get | ResourceTypeUnsupportedException | self._get_dns_suffix | MlflowSageMakerException | MlflowSageMakerException | self._get_endpoint | logging.info | os.environ.get | self._validate_arn | self._validate_arn | splitted_arn[5].split | splitted_arn[5].split | sagemaker_mlflow_host_arn.split | MlflowSageMakerException | warnings.warn | get_dns_suffix | validate_and_parse_arn | logging.info | os.environ.get | warnings.warn | MlflowSageMakerException | Arn | warnings.warn | MlflowSageMakerException | MlflowSageMakerException | self.__class__ | os.environ.get | splitted_arn[5].split | splitted_arn[5].split | arn.split | warnings.warn"
+      },
+      {
+        "package_id": "sagemaker-mlflow",
+        "version": "0.2.0",
+        "file_path": "/var/folders/85/lvn9npw926ddqd446fl7qbrw0000gn/T/.tmp4ZOR1q/sagemaker-mlflow-0.2.0/sagemaker_mlflow-0.2.0/sagemaker_mlflow/mlflow_sagemaker_request_header_provider.py",
+        "extracted_content": "from sagemaker_mlflow.mlflow_sagemaker_helpers import SageMakerMLflowHostMetadataProvider | from sagemaker_mlflow.exceptions import ResourceTypeUnsupportedException | from mlflow import get_tracking_uri | from mlflow.tracking.request_header.abstract_request_header_provider import RequestHeaderProvider | ResourceTypeUnsupportedException | self._get_arn_header | self.host_metadata_provider.set_arn | get_tracking_uri | super().__init__ | super | SageMakerMLflowHostMetadataProvider"
+      }
+    ]
+  },
+  {
+    "chain": [
+      {
+        "package_id": "sagemaker",
+        "version": "2.232.2",
+        "vulnerabilities": [
+          "GHSA-62rc-f4v9-h543",
+          "GHSA-32g6-mg92-ghm2",
+          "GHSA-rjrp-m2jw-pv9c",
+          "GHSA-5r2p-pjr8-7fh7"
+        ],
+        "is_vulnerable": true
+      }
+    ],
+    "findings": []
+  }
+]

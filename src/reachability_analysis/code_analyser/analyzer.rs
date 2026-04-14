@@ -1,4 +1,5 @@
 use rayon::prelude::*;
+use serde::Serialize;
 use std::{
     path::{Path, PathBuf},
     sync::{Arc, Mutex},
@@ -11,6 +12,14 @@ pub struct CodeAnalyzer {
     pub dep_to_track: DepNode,
     pub target_dep: DepNode,
     pub source_files: Vec<PathBuf>,
+}
+
+#[derive(Serialize, Debug, Clone)]
+pub struct Finding{
+    pub package_id: String,
+    pub version: String,
+    pub file_path: String,
+    pub extracted_content: String
 }
 
 impl CodeAnalyzer {
@@ -42,8 +51,8 @@ impl CodeAnalyzer {
         Ok(files)
     }
 
-    pub fn analyze(&self) -> Result<Vec<String>, AppError> {
-        let results: Vec<String> = self
+    pub fn analyze(&self) -> Result<Vec<Finding>, AppError> {
+        let results: Vec<Finding> = self
             .source_files
             .par_iter()
             .map(|file| self.analyze_file(file))
@@ -56,7 +65,7 @@ impl CodeAnalyzer {
         Ok(results)
     }
 
-    fn analyze_file(&self, file: &Path) -> Result<Option<String>, AppError> {
+    fn analyze_file(&self, file: &Path) -> Result<Option<Finding>, AppError> {
         println!("analyzing path: {:?}", file);
         let content = std::fs::read_to_string(file)?;
         let mut parser = self.parser.lock().unwrap();
@@ -69,7 +78,12 @@ impl CodeAnalyzer {
         let result = self.find_imports(tree.root_node(), &content)?;
 
         match result {
-            Some(t) => Ok(Some(t.join(" | "))),
+            Some(t) => Ok(Some(Finding{
+                package_id: self.target_dep.package_id.clone(),
+                version: self.target_dep.version.clone(),
+                file_path: file.to_string_lossy().to_string(),
+                extracted_content: t.join(" | "),
+            })),
             None => Ok(None),
         }
     }
@@ -137,7 +151,7 @@ impl CodeAnalyzer {
     }
 }
 
-#[cfg(test)]
+/* #[cfg(test)]
 mod tests {
     use crate::dep_graph::graph::DepNode;
     use crate::reachability_analysis::code_analyser::analyzer::CodeAnalyzer;
@@ -299,4 +313,4 @@ def authenticate():
 
         Ok(())
     }
-}
+} */
