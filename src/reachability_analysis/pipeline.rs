@@ -24,13 +24,10 @@ pub async fn analyze_source(
     let temp = tempfile::TempDir::new().unwrap();
     let tmp_dir = temp.path();
 
-    //skapa cache lookup hashset om det finns ta här i från annars hämta,
-
     let mut source_cache: HashMap<(String, String), PathBuf> = HashMap::new();
 
     let mut results: Vec<VulnChainAnalysis> = Vec::new();
 
-    //loopa igenom vuln chain och ta två åt gången den första är from den efter är to , jämför med package name från den först
 
     for chain in vuln_chains {
         let mut chain_findings = Vec::new();
